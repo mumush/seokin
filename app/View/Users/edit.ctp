@@ -1,24 +1,18 @@
 
-<div class="registerDiv">
+<div>
 
 	<?php echo $this->Form->create('User'); ?>
 	    <fieldset>
-	        <legend><?php echo __('Add User'); ?></legend>
+	        <legend><?php echo __('Edit User'); ?></legend>
 	        <?php
 		        echo $this->Form->input('username');
 		        echo $this->Form->input('password');
 		        echo $this->Form->input('first_name');
 		        echo $this->Form->input('last_name');
 		        echo $this->Form->input('department_id', array('type' => 'text', 'id' => 'deptOptions'));
-		        ?>
-
-		        <!-- <input type='text' name="deptOptions" id="deptOptions" /> -->
-
-		        <?
-
 	    	?>
 	    </fieldset>
-	<?php echo $this->Form->end(__('Submit')); ?>
+	<?php echo $this->Form->end('Update Info'); ?>
 
 </div>
 
