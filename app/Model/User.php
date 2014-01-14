@@ -7,6 +7,9 @@ class User extends AppModel {
 	//create schema relationship between this table and the Department table
 	public $belongsTo = 'Department';
 
+    public $hasMany = 'Description';
+
+
     //set up validation rules for new user registration
     public $validate = array(
         'username' => array(

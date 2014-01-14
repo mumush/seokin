@@ -30,9 +30,7 @@
         </td>
         <td>
 
-            <?php
-                echo $this->Html->link('Delete', array('action' => 'delete', $user['User']['id']) );
-            ?>
+            <?php echo $this->Html->link('Delete', array('action' => 'delete', $user['User']['id']) ); ?>
 
         </td>
     </tr>
