@@ -4,6 +4,9 @@ App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 
 class User extends AppModel {
 
+    public $name = 'User';
+
+
 	//create schema relationship between this table and the Department table
 	public $belongsTo = 'Department';
 

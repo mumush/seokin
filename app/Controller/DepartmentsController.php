@@ -2,6 +2,8 @@
 
 class DepartmentsController extends AppController {
 
+	public $name = 'Departments';
+
     public $helpers = array('Html', 'Form');
 
     public function index() {

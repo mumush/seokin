@@ -2,6 +2,8 @@
 
 class UsersController extends AppController {
 
+    public $name = 'Users';
+
     /* AUTHENTICATION */
 
     public function beforeFilter() {

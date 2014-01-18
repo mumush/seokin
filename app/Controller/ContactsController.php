@@ -2,6 +2,8 @@
 
 class ContactsController extends AppController {
 
+	public $name = 'Contacts';
+
     public $helpers = array('Html', 'Form', 'Session');
     public $components = array('Session');
 

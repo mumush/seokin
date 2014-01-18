@@ -36,13 +36,15 @@
 		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		    <ul class="nav navbar-nav">
 		      <li class="active"><a href="#"><i class="fa fa-tachometer"></i> Dashboard</a></li>
-		      <li><a href="#"><i class="fa fa-list-alt"></i> Description</a></li>
-		      <li><a href="#"><i class="fa fa-sign-in"></i> Postings</a></li>
+		      <li><a href="#"><i class="fa fa-list-alt"></i> Descriptions</a></li>
+		      <li><a href="#"><i class="fa fa-sign-in"></i> Jobs</a></li>
 		      <li><a href="#"><i class="fa fa-users"></i> Employers</a></li>
 		      <li><a href="#"><i class="fa fa-cog"></i> Account</a></li>
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
-		      <li><a href="#"><i class="fa fa-user"></i> Logout</a></li>
+		      <li>
+		      	<?php echo $this->Html->link("Logout", array('controller' => 'users', 'action' => 'logout') ); ?>
+		      </li>
 		    </ul>
 		  </div><!-- /.navbar-collapse -->
 		</nav>

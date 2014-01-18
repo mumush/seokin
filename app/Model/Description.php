@@ -2,10 +2,10 @@
 
 class Description extends AppModel {
 
+	public $name = 'Description';
+
 	public $belongsTo = array('User', 'Department');
 
-	public $hasOne = 'Contact';
-
-	//public $hasOne = 'Status';
+	public $hasOne = array('Contact');
 
 }

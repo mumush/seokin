@@ -1,6 +1,5 @@
 
 
-
 <h3>Description Information</h3>
 
 <div style="float: left; margin-right: 10%;">
@@ -46,7 +45,7 @@
 	echo $this->Form->input('admin_notes');
 
 
-	echo $this->Form->end('Save Description');
+	echo $this->Form->end('Update Description');
 
 	?>
 
