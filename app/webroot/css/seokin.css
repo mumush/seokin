@@ -1,0 +1,95 @@
+.loginRegister {
+
+	background: #EEEEEE;
+
+}
+
+.seokinLoginHeader {
+
+  margin-bottom: 3%;
+
+}
+
+.seokinLoginHeader h1 {
+
+  font-weight: 100;
+  font-size: 5em;
+  font-family: 'Dosis';
+
+}
+
+.seokinLoginHeader h4 {
+
+  font-weight: 100;
+  font-size: 2em;
+  font-family: 'Dosis';
+
+  padding-bottom: 3%;
+  border-bottom: 1px solid rgba(255, 165, 0, .5);
+
+}
+
+#loginForm, #registerForm {
+
+  font-weight: 100;
+  font-family: 'Dosis';
+
+}
+
+#loginForm input[type="text"], #loginForm input[type="password"], .registerInfo {
+
+	/*remove focus border*/
+	outline: none;
+
+	padding: 1%;
+
+	width: 50%;
+
+	border-radius: 2px;
+
+	border: 1px solid #ccc;
+
+	font-size: 1.5em;
+
+	color: #636363;
+
+}
+
+#loginForm input:focus, #registerForm input:focus {
+
+  border: 1px solid rgba(243, 110, 33, .5);
+
+  -moz-box-shadow:    3px 3px 5px 6px rgba(255, 165, 0, .9);
+  -webkit-box-shadow: 3px 3px 5px 6px rgba(255, 165, 0, .9);
+  box-shadow:       inset 0 0 3px rgba(255, 165, 0, .9);
+
+}
+
+#loginForm input:first-child, #registerForm input:first-child {
+
+  margin-bottom: .5%;
+
+}
+
+#loginForm input[type="submit"], #loginForm a, #registerForm input[type="submit"], #registerForm a {
+
+  margin-top: 2%;
+
+  border-radius: 2px;
+
+  font-size: 1.5em;
+
+}
+
+#deptOptions {
+
+	/*remove focus border*/
+	outline: none;
+
+	border-radius: 2px;
+
+	border: 1px solid #ccc;
+
+	color: #7F7F7F;
+
+}

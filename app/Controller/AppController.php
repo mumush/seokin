@@ -51,7 +51,6 @@ class AppController extends Controller {
 
         $this->Auth->allow('index', 'view');
 
-
         //Every controller extending this one uses the Seokin layout
         $this->layout = 'seokin';
 
