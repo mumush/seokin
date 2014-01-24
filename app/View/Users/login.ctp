@@ -1,14 +1,19 @@
 
-<div class="users form">
+<div id="loginForm">
+
 	<?php echo $this->Session->flash('auth'); ?>
+
 	<?php echo $this->Form->create('User'); ?>
 	    <fieldset>
-	        <legend>
-	            <?php echo __('Please enter your username and password'); ?>
-	        </legend>
-	        <?php echo $this->Form->input('username');
-	        echo $this->Form->input('password');
+	    <?php 
+	        echo $this->Form->input('username', array('label' => false, 'placeholder' => 'Username', 'class' => ''));
+	        echo $this->Form->input('password', array('label' => false, 'placeholder' => 'Password', 'class' => ''));
 	    ?>
 	    </fieldset>
-	<?php echo $this->Form->end(__('Login')); ?>
+
+	    <?php echo $this->Form->submit('Sign in', array('class' => 'btn btn-success btn-lg', 'div' => false) ); ?>
+
+	    <?php echo $this->Html->link('Register', array('action' => 'add'), array('class' => 'btn btn-info btn-lg') ); ?>
+
+	<?php echo $this->Form->end(); ?>
 </div>

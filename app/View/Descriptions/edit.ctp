@@ -1,55 +1,96 @@
+<div class="editDescription">
 
+<h1 class="sectionHeading"><i class="fa fa-pencil-square-o"></i> Edit Description</h1>
 
-<h3>Description Information</h3>
+<div class="row">
 
-<div style="float: left; margin-right: 10%;">
+	<div class="col-lg-6">
 
-<?php
-	echo $this->Form->create('Description');
+		<?php
 
-	echo $this->Form->input('title');
-	echo $this->Form->input('location');
-	echo $this->Form->input('essential_tasks');
-	echo $this->Form->input('nonessential_tasks');
-	echo $this->Form->input('quals_req');
-	echo $this->Form->input('quals_pref');
-	echo $this->Form->input('start_date');
-	echo $this->Form->input('end_date');
-	echo $this->Form->input('hrs_per_week');
-	echo $this->Form->input('shift_days');
-	echo $this->Form->input('shift_start_time');
-	echo $this->Form->input('shift_end_time');
-	echo $this->Form->input('wage', array('id' => 'wage'));
-	echo $this->Form->input('flexible');
+		echo $this->Form->create('Description');
+
+		echo $this->Form->input('title', array('class' => 'form-control span3', 'label' => 'Job Title') );
+		echo $this->Form->input('location', array('class' => 'form-control') );
+		echo $this->Form->input('start_date', array('class' => 'form-control') );
+		echo $this->Form->input('end_date', array('class' => 'form-control') );
+		echo $this->Form->input('hrs_per_week', array('class' => 'form-control', 'label' => 'Hours Per Week') );
+		echo $this->Form->input('shift_days', array('class' => 'form-control') );
+		echo $this->Form->input('shift_start_time', array('class' => 'form-control') );
+		echo $this->Form->input('shift_end_time', array('class' => 'form-control') );
+		echo $this->Form->input('wage', array('id' => 'wage', 'class' => 'form-control') );
+		echo $this->Form->input('flexible');
+
+		?>
+
+	</div>
+
+	<div class="col-lg-6">
+
+		<?php
+
+		echo $this->Form->input('Contact.name', array('class' => 'form-control', 'label' => 'Contact Name') );
+		echo $this->Form->input('Contact.email', array('class' => 'form-control', 'label' => 'Contact Email') );
+		echo $this->Form->input('Contact.phone', array('class' => 'form-control', 'label' => 'Contact Phone') );
+		echo $this->Form->input('Contact.fax', array('class' => 'form-control', 'label' => 'Contact Fax') );
+		echo $this->Form->input('Contact.show_phone', array('type' => 'checkbox') );
+		echo $this->Form->input('Contact.show_email', array('type' => 'checkbox') );
+
+		echo '<br />';
+
+		echo $this->Form->input('admin_notes', array('class' => 'form-control') );
+
+		?>
+
+	</div>
+
+</div>
+
+<div class="row" style="margin-top: 3%;">
+
+	<div class="col-lg-12">
+
+	<?php 
+
+		echo $this->Form->input('essential_tasks', array('class' => 'form-control') );
+		echo $this->Form->input('nonessential_tasks', array('class' => 'form-control') );
+		echo $this->Form->input('quals_req', array('class' => 'form-control') );
+		echo $this->Form->input('quals_pref', array('class' => 'form-control') );
 
 	?>
 
-</div>
-
-	<br /><br />
-
-	<h3>Contact Information</h3>
-
-<div style="float: left;">
-
-	<?php
-
-	echo $this->Form->input('Contact.name');
-	echo $this->Form->input('Contact.email');
-	echo $this->Form->input('Contact.phone');
-	echo $this->Form->input('Contact.fax');
-	echo $this->Form->input('Contact.show_phone', array('type' => 'checkbox') );
-	echo $this->Form->input('Contact.show_email', array('type' => 'checkbox') );
-
-
-	echo $this->Form->input('admin_notes');
-
-
-	echo $this->Form->end('Update Description');
-
-	?>
+	</div>
 
 </div>
+
+<div class="row">
+
+	<div class="col-lg-6">
+
+		<?php
+
+		    echo $this->Form->submit('Update Description', array('class' => 'btn btn-success btn-lg') );
+
+			echo $this->Form->end();
+
+		?>
+
+	</div>
+
+	<div class="col-lg-6">
+
+		<?php
+
+			echo $this->Html->link('<i class="fa fa-trash-o"></i> Discard Changes', 
+				array('controller' => 'descriptions', 'action' => 'index'), 
+				array('escape' => false, 'class' => 'btn btn-danger btn-lg') );
+
+		?>
+
+	</div>
+
+</div>
+
 
 
 <script src="https://code.jquery.com/jquery.js"></script>

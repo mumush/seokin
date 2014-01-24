@@ -13,7 +13,9 @@
 	    	?>
 	    </fieldset>
 
-	    <?php echo $this->Form->submit('Register', array('class' => 'btn btn-info btn-lg')); ?>
+	    <?php echo $this->Html->link('<i class="fa fa-long-arrow-left"></i>', array('action' => 'login'), array('class' => 'btn btn-success btn-lg', 'escape' => false) ); ?>
+
+	    <?php echo $this->Form->submit('Register', array('class' => 'btn btn-info btn-lg', 'div' => false) ); ?>
 
 	<?php echo $this->Form->end(); ?>
 

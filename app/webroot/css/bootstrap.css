@@ -2262,7 +2262,7 @@ textarea.input-lg {
   cursor: pointer;
   background-image: none;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 3px; /*rhoff37*/
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -4324,6 +4324,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
   min-height: 50px;
   margin-bottom: 20px;
   border: 1px solid transparent;
+
+  font-family: 'Roboto'; /*rhoff37*/
+  font-size: 1.1em;
+  font-weight: 100;
+
 }
 
 .navbar:before,
@@ -4491,6 +4496,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
+
+  padding: 5px 15px; /*rhoff37*/
+  padding-left: 0px; /*rhoff37*/
+
 }
 
 .navbar-brand:hover,
@@ -4541,7 +4550,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-nav > li > a {
   padding-top: 10px;
   padding-bottom: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
   line-height: 20px;
+
+  line-height: 39px; /*rhoff37*/
+
 }
 
 @media (max-width: 767px) {
@@ -4704,15 +4718,23 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-default {
   background-color: #f8f8f8;
   border-color: #e7e7e7;
+
+  background: rgba(243, 110, 33, .9); /*rhoff37*/
 }
 
 .navbar-default .navbar-brand {
-  color: #777777;
+
+  color: #33332D; /*rhoff37*/
+  font-size: 1.6em;
+  font-weight: 100;
+  font-family: 'Roboto';
+
 }
 
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
   color: #5e5e5e;
+  color: #292929; /*rhoff37*/
   background-color: transparent;
 }
 
@@ -4722,6 +4744,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-default .navbar-nav > li > a {
   color: #777777;
+
+  color: #474747; /*rhoff37*/
+  font-size: 1.1em; /*rhoff37*/
 }
 
 .navbar-default .navbar-nav > li > a:hover,
@@ -4735,6 +4760,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .active > a:focus {
   color: #555555;
   background-color: #e7e7e7;
+
+  color: #303030; /*rhoff37*/
+  background-color: rgba(229, 75, 12, .3); /*rhoff37*/
+
 }
 
 .navbar-default .navbar-nav > .disabled > a,

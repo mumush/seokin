@@ -1,3 +1,9 @@
+body {
+
+  background: rgba(201, 201, 201, .3);
+
+}
+
 .loginRegister {
 
 	background: #EEEEEE;
@@ -91,5 +97,147 @@
 	border: 1px solid #ccc;
 
 	color: #7F7F7F;
+
+}
+
+/*TOP NAVIGATION*/
+
+#dashNav, #descripsNav, #newdescripNav, #postingsNav, #positionsNav {
+
+  -webkit-transition: background .9s ease-out;
+
+}
+
+#dashNav:hover {
+
+  background: #f5f5f5;
+
+}
+
+#descripsNav:hover {
+
+  background: #FCD65A;
+
+}
+
+#newdescripNav:hover {
+
+  background: #17C060;
+
+}
+
+#postingsNav:hover {
+
+  background: #72F4CF;
+
+}
+
+#positionsNav:hover {
+
+  background: #F94D3E;
+
+}
+
+/*END TOP NAVIGATION*/
+
+/*SEOkin Layout*/
+
+.sectionHeading {
+
+  margin-bottom: 5%;
+
+  text-align: center;
+
+  font-family: 'Roboto Condensed';
+  font-size: 3.5em;
+  color: #3B3B3B;
+  font-weight: 300;
+
+  text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
+
+}
+
+.allDescriptions table tr:first-child {
+
+  font-family: 'Raleway';
+
+  font-size: 1.2em;
+
+
+}
+
+.allDescriptions table tr {
+
+  font-family: 'Roboto';
+
+  font-weight: 100;
+
+  font-size: 1.1em;
+
+}
+
+.allDescriptions button, .allDescriptions a {
+
+  font-family: 'Raleway';
+
+}
+
+.editDescription label {
+
+  font-family: 'Raleway';
+
+  font-size: 1.1em;
+
+}
+
+.editDescription input, .editDescription textarea {
+
+  margin-bottom: 2%;
+
+  border-radius: 1px;
+
+}
+
+.editDescription input:focus, .editDescription textarea:focus {
+
+  border: 1px solid rgba(243, 110, 33, .5);
+
+  -moz-box-shadow:    3px 3px 5px 6px rgba(255, 165, 0, .9);
+  -webkit-box-shadow: 3px 3px 5px 6px rgba(255, 165, 0, .9);
+  box-shadow:       inset 0 0 3px rgba(255, 165, 0, .9);
+
+}
+
+.editDescription input[type="submit"] {
+
+  margin-top: 4%;
+  margin-bottom: 5%;
+
+  width: 100%;
+  height: 80px;
+
+  font-family: 'Raleway';
+
+  font-size: 1.4em;
+
+}
+
+.editDescription a {
+
+  padding-top: 28px;
+
+  margin-top: 4%;
+  margin-bottom: 5%;
+
+  border-radius: 1px;
+
+  width: 100%;
+  height: 80px;
+
+  font-family: 100;
+
+  font-family: 'Raleway';
+
+  font-size: 1.4em;
 
 }
