@@ -51,12 +51,10 @@
 	<div class="col-lg-12">
 
 	<?php 
-
-		echo $this->Form->input('essential_tasks', array('class' => 'form-control') );
-		echo $this->Form->input('nonessential_tasks', array('class' => 'form-control') );
-		echo $this->Form->input('quals_req', array('class' => 'form-control') );
-		echo $this->Form->input('quals_pref', array('class' => 'form-control') );
-
+		echo $this->Form->input('essential_tasks', array('class' => 'form-control', 'label' => 'Essential Tasks') );
+		echo $this->Form->input('nonessential_tasks', array('class' => 'form-control', 'label' => 'Nonessential Tasks') );
+		echo $this->Form->input('quals_req', array('class' => 'form-control', 'label' => 'Required Qualifications') );
+		echo $this->Form->input('quals_pref', array('class' => 'form-control', 'label' => 'Preferred Qualifications') );
 	?>
 
 	</div>
@@ -69,7 +67,7 @@
 
 		<?php
 
-		    echo $this->Form->submit('Update Description', array('class' => 'btn btn-success btn-lg') );
+		    echo $this->Form->submit('Update Description', array('class' => 'btn btn-info btn-lg') );
 
 			echo $this->Form->end();
 
@@ -80,14 +78,27 @@
 	<div class="col-lg-6">
 
 		<?php
-
 			echo $this->Html->link('<i class="fa fa-trash-o"></i> Discard Changes', 
 				array('controller' => 'descriptions', 'action' => 'index'), 
 				array('escape' => false, 'class' => 'btn btn-danger btn-lg') );
-
 		?>
 
 	</div>
+
+</div>
+
+<div class="row">
+
+	<div class="col-lg-12">
+
+		<?php
+			echo $this->Html->link('<i class="fa fa-check"></i> Approve Description', 
+				array('controller' => 'descriptions', 'action' => ''), 
+				array('escape' => false, 'class' => 'btn btn-success btn-lg') );
+		?>
+
+	</div>	
+
 
 </div>
 

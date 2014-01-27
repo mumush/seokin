@@ -1,18 +1,31 @@
+<div class="editUser">
 
-<div>
+<h1 class="sectionHeading"><i class="fa fa-user"></i> Account</h1>
 
-	<?php echo $this->Form->create('User'); ?>
-	    <fieldset>
-	        <legend><?php echo __('Edit User'); ?></legend>
-	        <?php
-		        echo $this->Form->input('username');
-		        echo $this->Form->input('password');
-		        echo $this->Form->input('first_name');
-		        echo $this->Form->input('last_name');
-		        echo $this->Form->input('department_id', array('type' => 'text', 'id' => 'deptOptions'));
-	    	?>
-	    </fieldset>
-	<?php echo $this->Form->end('Update Info'); ?>
+	<div class="row">
+
+		<div class="col-lg-7 col-lg-offset-3">
+
+			<?php echo $this->Form->create('User'); ?>
+			    <fieldset>
+			        <?php
+				        echo $this->Form->input('username', array('class' => 'form-control input-lg col-sm-2'));
+				        echo $this->Form->input('password', array('class' => 'form-control input-lg'));
+				        echo $this->Form->input('first_name', array('class' => 'form-control input-lg'));
+				        echo $this->Form->input('last_name', array('class' => 'form-control input-lg')); ?>
+				        <label>Department</label>
+				        <?php 
+				        	echo $this->Form->input('department_id', array('class' => 'form-control input-lg', 'type' => 'text', 'id' => 'editDeptOptions', 'label' => false));
+			    		?>
+			    </fieldset>
+
+			    <?php echo $this->Form->submit('Update Info', array('class' => 'btn btn-info btn-lg', 'escape' => false) ); ?>
+
+			<?php echo $this->Form->end(); ?>
+
+		</div>
+
+	</div>
 
 </div>
 
@@ -24,7 +37,7 @@
 
 <script>
 
-	$('#deptOptions').typeahead({
+	$('#editDeptOptions').typeahead({
 		name: 'accounts',
 		prefetch: '../app/webroot/files/depts.json'
 	});

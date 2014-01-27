@@ -102,7 +102,7 @@ body {
 
 /*TOP NAVIGATION*/
 
-#dashNav, #descripsNav, #newdescripNav, #postingsNav, #positionsNav {
+#dashNav, #descripsNav, #postingsNav, #employersNav, #accountNav {
 
   -webkit-transition: background .9s ease-out;
 
@@ -120,19 +120,19 @@ body {
 
 }
 
-#newdescripNav:hover {
+#postingsNav:hover {
 
   background: #17C060;
 
 }
 
-#postingsNav:hover {
+#employersNav:hover {
 
   background: #72F4CF;
 
 }
 
-#positionsNav:hover {
+#accountNav:hover {
 
   background: #F94D3E;
 
@@ -157,7 +157,7 @@ body {
 
 }
 
-.allDescriptions table tr:first-child {
+.allDescriptions table tr:first-child, .allUsers table tr:first-child {
 
   font-family: 'Raleway';
 
@@ -166,7 +166,7 @@ body {
 
 }
 
-.allDescriptions table tr {
+.allDescriptions table tr, .allUsers table tr {
 
   font-family: 'Roboto';
 
@@ -176,13 +176,26 @@ body {
 
 }
 
-.allDescriptions button, .allDescriptions a {
+.allDescriptions button, .allDescriptions a, .allUsers button, .allUsers a {
 
   font-family: 'Raleway';
 
 }
 
-.editDescription label {
+#newDescription, #newUser {
+
+  margin-top: 1%;
+  margin-right: 2%;
+
+}
+
+#newDescription:hover, #newUser:hover {
+
+  text-decoration: none;
+
+}
+
+.editDescription label, .addDescription label {
 
   font-family: 'Raleway';
 
@@ -190,7 +203,7 @@ body {
 
 }
 
-.editDescription input, .editDescription textarea {
+.editDescription input, .editDescription textarea, .addDescription input, .addDescription textarea {
 
   margin-bottom: 2%;
 
@@ -198,7 +211,7 @@ body {
 
 }
 
-.editDescription input:focus, .editDescription textarea:focus {
+.editDescription input:focus, .editDescription textarea:focus, .addDescription input:focus, .addDescription textarea:focus {
 
   border: 1px solid rgba(243, 110, 33, .5);
 
@@ -208,7 +221,7 @@ body {
 
 }
 
-.editDescription input[type="submit"] {
+.editDescription input[type="submit"], .addDescription input[type="submit"] {
 
   margin-top: 4%;
   margin-bottom: 5%;
@@ -216,13 +229,15 @@ body {
   width: 100%;
   height: 80px;
 
-  font-family: 'Raleway';
+  font-family: 'Roboto';
 
-  font-size: 1.4em;
+  font-weight: 100;
+
+  font-size: 1.6em;
 
 }
 
-.editDescription a {
+.editDescription a, .addDescription a {
 
   padding-top: 28px;
 
@@ -234,9 +249,125 @@ body {
   width: 100%;
   height: 80px;
 
-  font-family: 100;
+  font-family: 'Roboto';
+
+  font-weight: 100;
+
+  font-size: 1.6em;
+
+}
+
+.editUser {
+
+  font-weight: 100;
+  font-family: 'Dosis';
+
+}
+
+.editUser input {
+
+  border-radius: 2px;
+
+  margin-bottom: 4%;
+
+  font-family: 'Roboto';
+  font-weight: 100;
+
+}
+
+.editUser input:focus {
+
+  border: 1px solid rgba(243, 110, 33, .5);
+
+  -moz-box-shadow:    3px 3px 5px 6px rgba(255, 165, 0, .9);
+  -webkit-box-shadow: 3px 3px 5px 6px rgba(255, 165, 0, .9);
+  box-shadow:       inset 0 0 3px rgba(255, 165, 0, .9);
+
+}
+
+.editUser label {
 
   font-family: 'Raleway';
+
+  font-size: 1.3em;
+
+}
+
+#editDeptOptions {
+
+  /*remove focus border*/
+  outline: none;
+
+  border-radius: 2px;
+
+  border: 1px solid #ccc;
+
+  color: #7F7F7F;
+
+  margin-bottom: 10%;
+
+  color: #555555;
+
+}
+
+#editDeptOptions:focus {
+
+  border: 1px solid rgba(243, 110, 33, .5);
+
+  -moz-box-shadow:    3px 3px 5px 6px rgba(255, 165, 0, .9);
+  -webkit-box-shadow: 3px 3px 5px 6px rgba(255, 165, 0, .9);
+  box-shadow:       inset 0 0 3px rgba(255, 165, 0, .9);
+
+}
+
+.editUser .twitter-typeahead .tt-dropdown-menu {
+
+  margin-top: -20px;
+
+}
+
+.editUser .twitter-typeahead .tt-suggestion {
+
+  text-align: center;
+
+}
+
+.editUser .tt-query, .editUser .tt-hint {
+
+  font-size: 1.4em;
+
+  width: 280%;
+
+}
+
+.editUser .tt-dropdown-menu {
+    width: 240%;
+    margin-top: 12px;
+    margin-left: 48px;
+    padding: 0px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 1px 10px rgba(0,0,0,.2);
+
+    border: 1px solid #ccc;
+}
+
+.editUser input[type="submit"] {
+
+  margin-top: 10%;
+  margin-bottom: 5%;
+
+  width: 100%;
+  height: 70px;
+
+  font-family: 'Raleway';
+  font-weight: 400;
 
   font-size: 1.4em;
 

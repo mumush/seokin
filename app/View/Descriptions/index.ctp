@@ -1,5 +1,16 @@
 <div class="allDescriptions">
 
+    <div class="row">
+
+        <?php
+            echo $this->Html->link('<i class="fa fa-plus"></i>', 
+                array('controller' => 'descriptions', 'action' => 'add'), 
+                array('escape' => false, 'id' => 'newDescription', 'class' => 'pull-right btn btn-info') );
+        ?>
+
+    </div>
+
+
 <h1 class="sectionHeading"><i class="fa fa-list"></i> Pending Descriptions</h1>
 
 <div class="table-responsive">

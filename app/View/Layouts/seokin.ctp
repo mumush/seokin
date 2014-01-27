@@ -15,9 +15,9 @@
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 		<!--Google Web Fonts-->
-		<link href='http://fonts.googleapis.com/css?family=Raleway:100,300' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Raleway:100,300|Roboto:400,300|Roboto+Condensed:400,700,300|Dosis:300,400' rel='stylesheet' type='text/css'>
+
+		<link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
 
 	</head>
 	
@@ -32,9 +32,9 @@
 		      <span class="icon-bar"></span>
 		      <span class="icon-bar"></span>
 		    </button>
-		    <a class="navbar-brand" href="#">
-		    	<?php echo $this->Html->image('rit_icon.png', array('alt' => 'Seokin', 'id' => 'brandLogo', 'style' => 'opacity: .85;')); ?> Seokin
-		    </a>
+
+			<?php echo $this->Html->link('Seokin', 
+			array('controller' => 'descriptions', 'action' => 'index'), array('escape' => false, 'class' => 'navbar-brand') ); ?>
 
 		  </div>
 
@@ -49,14 +49,23 @@
 					<?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> Descriptions', 
 					array('controller' => 'descriptions', 'action' => 'index'), array('escape' => false, 'id' => 'descripsNav') ); ?>
 				  </li>	
-			      <li><a id="newdescripNav" href="#"><span class="glyphicon glyphicon-pushpin"></span> Postings</a></li>
-			      <li><a id="postingsNav" href="#"><span class="glyphicon glyphicon-user"></span> Employers</a></li>
-			      <li><a id="positionsNav" href="#"><span class="glyphicon glyphicon-cog"></span> Account</a></li>
+				  <li>
+					<?php echo $this->Html->link('<span class="glyphicon glyphicon-pushpin"></span> Postings', 
+					array('controller' => 'descriptions', 'action' => 'postings'), array('escape' => false, 'id' => 'postingsNav') ); ?>
+			      </li>
+			      <li>
+					<?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> Employers', 
+					array('controller' => 'users', 'action' => 'index'), array('escape' => false, 'id' => 'employersNav') ); ?>
+			      </li>
+			      <li>
+					<?php echo $this->Html->link('<span class="glyphicon glyphicon-cog"></span> Account', 
+					array('controller' => 'users', 'action' => 'edit', AuthComponent::user('id') ), array('escape' => false, 'id' => 'accountNav') ); ?>
+			      </li>
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
 		      <li>
 		      	<?php echo $this->Html->link('<span class="glyphicon glyphicon-off"></span> Logout', 
-		      	array('controller' => 'users', 'action' => 'logout'), array('escape' => false) ); ?>
+		      	array('controller' => 'users', 'action' => 'logout'), array('escape' => false, 'id' => 'logoutNav') ); ?>
 		      </li>
 		    </ul>
 		  </div><!-- /.navbar-collapse -->

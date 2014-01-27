@@ -4720,14 +4720,20 @@ textarea.input-group-sm > .input-group-btn > .btn {
   border-color: #e7e7e7;
 
   background: rgba(243, 110, 33, .9); /*rhoff37*/
+
+  border-top: 5px solid #474747;
 }
 
 .navbar-default .navbar-brand {
 
   color: #33332D; /*rhoff37*/
-  font-size: 1.6em;
-  font-weight: 100;
-  font-family: 'Roboto';
+  font-size: 3.5em;
+  font-family: 'Grand Hotel';
+
+  margin-top: 22px;
+  margin-right: 5px;
+  margin-left: 15px;
+  padding-right: 15px;
 
 }
 

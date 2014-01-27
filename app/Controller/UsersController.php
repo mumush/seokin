@@ -4,6 +4,9 @@ class UsersController extends AppController {
 
     public $name = 'Users';
 
+    public $helpers = array('Html', 'Form', 'Session');
+    public $components = array('Session');
+
     /* AUTHENTICATION */
 
     public function beforeFilter() {
@@ -11,11 +14,12 @@ class UsersController extends AppController {
         // Allow users to register and logout.
         $this->Auth->allow('add', 'logout');
 
-        $this->layout = 'loginregister';
-
     }
 
     public function login() {
+
+        $this->layout = 'loginregister';
+
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
                 return $this->redirect($this->Auth->redirect());
@@ -25,6 +29,7 @@ class UsersController extends AppController {
     }
 
     public function logout() {
+
         return $this->redirect($this->Auth->logout());
     }
 
@@ -34,12 +39,18 @@ class UsersController extends AppController {
     /* BAKED CAKEPHP USER CODE */
 
     public function index() {
+
+        $this->layout = 'seokin';
+
         $this->User->recursive = 0;
         $this->set('users', $this->paginate());
 
     }
 
     public function view($id = null) {
+
+        $this->layout = 'seokin';
+
         $this->User->id = $id;
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));
@@ -48,6 +59,8 @@ class UsersController extends AppController {
     }
 
     public function add() {
+
+        $this->layout = 'loginregister';
 
         if ($this->request->is('post')) {
 
@@ -81,6 +94,9 @@ class UsersController extends AppController {
     }
 
     public function edit($id = null) {
+
+        $this->layout = 'seokin';
+
         $this->User->id = $id;
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));
@@ -124,17 +140,69 @@ class UsersController extends AppController {
     }
 
     public function delete($id = null) {
-        $this->request->onlyAllow('post');
+
+        $this->layout = 'seokin';
+        
+        //$this->request->onlyAllow('post');
 
         $this->User->id = $id;
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));
         }
         if ($this->User->delete()) {
-            $this->Session->setFlash(__('User deleted'));
+            $this->Session->setFlash(__('User deleted!', 'default', array('class' => 'alert alert-info')));
+
+            //$this->Session->setFlash('User deletedgheruirge', array('class' => 'alert alert-info') );
+
             return $this->redirect(array('action' => 'index'));
         }
         $this->Session->setFlash(__('User was not deleted'));
+        return $this->redirect(array('action' => 'index'));
+    }
+
+    public function promote($id = null) {
+
+        $this->layout = 'seokin';
+
+        if ( !$id ) {
+            throw new NotFoundException(__('Invalid User'));
+        }
+
+        //get the users row based on the id passed in the method
+        //if it exists, run the update, otherwise throw an exception
+        if ( !$this->User->read(null, $id) ) {
+            throw new NotFoundException(__('Invalid User'));
+        }
+
+        //set the users access level to 1 => ADMIN as we are promoting the user
+        $this->User->set( array('access_id' => 1) );
+        //save the model, update the row in the db
+        $this->User->save();
+
+        //redirect to the index controller method
+        return $this->redirect(array('action' => 'index'));
+    }
+
+    public function demote($id = null) {
+
+        $this->layout = 'seokin';
+
+        if ( !$id ) {
+            throw new NotFoundException(__('Invalid User'));
+        }
+
+        //get the users row based on the id passed in the method
+        //if it exists, run the update, otherwise throw an exception
+        if ( !$this->User->read(null, $id) ) {
+            throw new NotFoundException(__('Invalid User'));
+        }
+
+        //set the users access level to 2 => EMPLOYER as we are demoting the user
+        $this->User->set( array('access_id' => 2) );
+        //save the model, update the row in the db
+        $this->User->save();
+
+        //redirect to the index controller method
         return $this->redirect(array('action' => 'index'));
     }
 

@@ -28,14 +28,14 @@
 
                             if( $desc['Description']['is_posted'] == 1 ) {
 
-                                echo $this->Html->link('<i class="fa fa-minus"></i> Unpost', 
-                                array('controller' => 'descriptions', 'action' => 'unpost'), array('escape' => false, 'class' => 'btn btn-danger') );
+                                echo $this->Html->link('<i class="fa fa-minus"></i> Remove Job', 
+                                array('controller' => 'descriptions', 'action' => 'unpost', $desc['Description']['id']), array('escape' => false, 'class' => 'btn btn-danger') );
 
                             }
                             if( $desc['Description']['is_posted'] == 0 ) {
 
-                                echo $this->Html->link('<i class="fa fa-plus"></i> Post', 
-                                array('controller' => 'descriptions', 'action' => 'repost'), array('escape' => false, 'class' => 'btn btn-danger') );
+                                echo $this->Html->link('<i class="fa fa-plus"></i> Post Job', 
+                                array('controller' => 'descriptions', 'action' => 'repost', $desc['Description']['id']), array('escape' => false, 'class' => 'btn btn-success') );
 
                             }
                         ?>
