@@ -68,7 +68,6 @@ class DescriptionsController extends AppController {
         }
     }
 
-
 	public function edit( $id = null ) {
 
 	    if (!$id) {
@@ -84,9 +83,22 @@ class DescriptionsController extends AppController {
 
 	        $this->Description->id = $id;
 
-			//set the descriptions status id back to 1 -> PENDING
-			//because it has been edited and needs approval
-			$this->request->data['Description']['status_id'] = 1;
+
+	        //get the row for the selected description from the db for comparison
+			$description = $this->Description->read( null, $this->Description->id );
+
+
+			//see if the title field has been changed in the edit form
+			//if it has, set the status of the description to pending
+			//if it hasn't, and other fields have been changed, don't change the status
+			if( $description['Description']['title'] != $this->request->data['Description']['title'] ) {
+
+				//set the descriptions status id back to 1 -> PENDING
+				//because it has been edited and needs approval
+				$this->request->data['Description']['status_id'] = 1;
+
+			}
+
 
 			//set is_posted back to false as the description needs to
 			//again be approved
@@ -126,7 +138,8 @@ class DescriptionsController extends AppController {
 	    }
 
     	//set the descriptions necessary hard coded changes because it is now a job
-		$this->Description->set( array('status_id' => 2, 'number' => ('number' + 1), 'is_posted' => 1)  );
+    	//initially set job to not posted
+		$this->Description->set( array('status_id' => 2, 'number' => ('number' + 1), 'is_posted' => 0)  );
 		//save the model, update the row in the db
 		$this->Description->save();
 
