@@ -83,26 +83,50 @@ class DescriptionsController extends AppController {
 
 	        $this->Description->id = $id;
 
-
 	        //get the row for the selected description from the db for comparison
 			$description = $this->Description->read( null, $this->Description->id );
 
+			//if the status is approved,
+			//when edits are made, only return the description to pending unless
+			//certain fields are changed
+			if( $description['Description']['status_id'] == 2 ) {
 
-			//see if the title field has been changed in the edit form
-			//if it has, set the status of the description to pending
-			//if it hasn't, and other fields have been changed, don't change the status
-			if( $description['Description']['title'] != $this->request->data['Description']['title'] ) {
+				//see if the title, wage, contact name, or any descriptive field has been changed in the edit form
+				//if any have, set the status of the description to pending
+				//if none have, and other fields have been changed, don't change the status
+				if( $description['Description']['title'] != $this->request->data['Description']['title']
+					|| $description['Description']['wage'] != $this->request->data['Description']['wage']
+					|| $description['Description']['essential_tasks'] != $this->request->data['Description']['essential_tasks']
+					|| $description['Description']['nonessential_tasks'] != $this->request->data['Description']['nonessential_tasks']
+					|| $description['Description']['quals_req'] != $this->request->data['Description']['quals_req']
+					|| $description['Description']['quals_pref'] != $this->request->data['Description']['quals_pref']
+					|| $description['Contact']['name'] != $this->request->data['Contact']['name']
+				) {
+
+					//set the descriptions status id back to 1 -> PENDING
+					//because it has been edited and needs approval
+					$this->request->data['Description']['status_id'] = 1;
+
+					//set is_posted back to false as the description needs to
+					//again be approved
+					$this->request->data['Description']['is_posted'] = 0;
+
+				}
+			}
+
+			//if the description isn't approved, ie. its either pending or denied
+			//just set its status back to pending regardless of which fields were edited
+			else {
 
 				//set the descriptions status id back to 1 -> PENDING
 				//because it has been edited and needs approval
 				$this->request->data['Description']['status_id'] = 1;
 
+				//set is_posted back to false as the description has
+				//been edited and its posted status should be reset for integrity
+				$this->request->data['Description']['is_posted'] = 0;
+
 			}
-
-
-			//set is_posted back to false as the description needs to
-			//again be approved
-			$this->request->data['Description']['is_posted'] = 0;
 
 
 	        if ($this->Description->save($this->request->data)) {
