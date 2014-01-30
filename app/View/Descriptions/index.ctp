@@ -1,5 +1,7 @@
 <div class="allDescriptions">
 
+    <?php echo $this->Session->flash(); ?>
+
     <div class="row">
 
         <?php
@@ -7,6 +9,12 @@
                 array('controller' => 'descriptions', 'action' => 'add'), 
                 array('escape' => false, 'id' => 'newDescription', 'class' => 'pull-right btn btn-info') );
         ?>
+
+    </div>
+
+    <div class="row">
+
+            <?php echo $this->Session->flash(); ?>
 
     </div>
 
@@ -154,6 +162,5 @@
 
     </table>
 </div>
-
 
 </div>

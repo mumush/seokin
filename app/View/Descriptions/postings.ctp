@@ -2,6 +2,8 @@
 
     <h1 class="sectionHeading"><i class="fa fa-list"></i> Job Postings</h1>
 
+    <?php echo $this->Session->flash(); ?>
+
     <div class="table-responsive">
         <table class="table table-bordered">
             <tr>

@@ -10,7 +10,7 @@
 
     </div>
 
-    <h1 class="sectionHeading"><i class="fa fa-user"></i> Employers</h1>
+    <h1 class="sectionHeading"><i class="fa fa-users"></i> Employers</h1>
 
     <?php echo $this->Session->flash(); ?>
 

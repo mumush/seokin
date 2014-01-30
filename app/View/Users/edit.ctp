@@ -2,6 +2,8 @@
 
 <h1 class="sectionHeading"><i class="fa fa-user"></i> Account</h1>
 
+	<?php echo $this->Session->flash(); ?>
+
 	<div class="row">
 
 		<div class="col-lg-7 col-lg-offset-3">
@@ -11,6 +13,7 @@
 			        <?php
 				        echo $this->Form->input('username', array('class' => 'form-control input-lg col-sm-2'));
 				        echo $this->Form->input('password', array('class' => 'form-control input-lg'));
+				        echo $this->Form->input('email', array('class' => 'form-control input-lg'));
 				        echo $this->Form->input('first_name', array('class' => 'form-control input-lg'));
 				        echo $this->Form->input('last_name', array('class' => 'form-control input-lg')); ?>
 				        <label>Department</label>

@@ -2,6 +2,8 @@
 
 <h1 class="sectionHeading"><i class="fa fa-pencil-square-o"></i> Edit Description</h1>
 
+<?php echo $this->Session->flash(); ?>
+
 <div class="row">
 
 	<div class="col-lg-6">

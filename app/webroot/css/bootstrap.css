@@ -4719,9 +4719,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
   background-color: #f8f8f8;
   border-color: #e7e7e7;
 
-  background: rgba(243, 110, 33, .9); /*rhoff37*/
+  background: #F27A35; /*rhoff37*/
 
   border-top: 5px solid #474747;
+
+
 }
 
 .navbar-default .navbar-brand {
@@ -5335,6 +5337,9 @@ a.thumbnail.active {
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
+
+  border-radius: 2px; /*rhoff37*/
+
 }
 
 .alert h4 {

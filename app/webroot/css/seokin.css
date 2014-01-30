@@ -102,9 +102,10 @@ body {
 
 /*TOP NAVIGATION*/
 
-#dashNav, #descripsNav, #postingsNav, #employersNav, #accountNav {
+#dashNav, #descripsNav, #postingsNav, #employersNav, #accountNav, #logoutNav {
 
   -webkit-transition: background .9s ease-out;
+  transition: background .9s ease-out;
 
 }
 
@@ -138,6 +139,18 @@ body {
 
 }
 
+#logoutNav {
+
+  padding-right: 40px;
+
+}
+
+#logoutNav:hover {
+
+  background: #f5f5f5;
+
+}
+
 /*END TOP NAVIGATION*/
 
 /*SEOkin Layout*/
@@ -161,8 +174,7 @@ body {
 
   font-family: 'Raleway';
 
-  font-size: 1.2em;
-
+  font-size: 1.3em;
 
 }
 
@@ -257,25 +269,25 @@ body {
 
 }
 
-.editUser {
+.editUser, .addUser {
 
   font-weight: 100;
   font-family: 'Dosis';
 
 }
 
-.editUser input {
+.editUser input, .addUser input {
 
   border-radius: 2px;
 
-  margin-bottom: 4%;
+  margin-bottom: 2%;
 
   font-family: 'Roboto';
   font-weight: 100;
 
 }
 
-.editUser input:focus {
+.editUser input:focus, .addUser input:focus {
 
   border: 1px solid rgba(243, 110, 33, .5);
 
@@ -285,7 +297,7 @@ body {
 
 }
 
-.editUser label {
+.editUser label, .addUser label {
 
   font-family: 'Raleway';
 
@@ -320,19 +332,19 @@ body {
 
 }
 
-.editUser .twitter-typeahead .tt-dropdown-menu {
+.editUser .twitter-typeahead .tt-dropdown-menu, .addUser .twitter-typeahead .tt-dropdown-menu  {
 
   margin-top: -20px;
 
 }
 
-.editUser .twitter-typeahead .tt-suggestion {
+.editUser .twitter-typeahead .tt-suggestion, .addUser .twitter-typeahead .tt-suggestion {
 
   text-align: center;
 
 }
 
-.editUser .tt-query, .editUser .tt-hint {
+.editUser .tt-query, .editUser .tt-hint, .addUser .tt-query, .editUser .tt-hint {
 
   font-size: 1.4em;
 
@@ -340,7 +352,7 @@ body {
 
 }
 
-.editUser .tt-dropdown-menu {
+.editUser .tt-dropdown-menu, .addUser .tt-dropdown-menu {
     width: 240%;
     margin-top: 12px;
     margin-left: 48px;
@@ -358,9 +370,9 @@ body {
     border: 1px solid #ccc;
 }
 
-.editUser input[type="submit"] {
+.editUser input[type="submit"], .addUser input[type="submit"] {
 
-  margin-top: 10%;
+  margin-top: 4%;
   margin-bottom: 5%;
 
   width: 100%;

@@ -44,27 +44,27 @@
 		  <!-- Collect the nav links, forms, and other content for toggling -->
 		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		    <ul class="nav navbar-nav">
-			      <li class="active"><a id="dashNav" href="#"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
-			      <li>
+			      <li><a id="dashNav" href="#"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
+			      <li <?php if( $this->params['controller'] == "descriptions" && $this->params['action'] == "index" ) echo 'class="active"'; ?> >
 					<?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> Descriptions', 
 					array('controller' => 'descriptions', 'action' => 'index'), array('escape' => false, 'id' => 'descripsNav') ); ?>
 				  </li>	
-				  <li>
+				  <li <?php if( $this->params['controller'] == "descriptions" && $this->params['action'] == "postings" ) echo 'class="active"'; ?> >
 					<?php echo $this->Html->link('<span class="glyphicon glyphicon-pushpin"></span> Postings', 
 					array('controller' => 'descriptions', 'action' => 'postings'), array('escape' => false, 'id' => 'postingsNav') ); ?>
 			      </li>
-			      <li>
+			      <li <?php if( $this->params['controller'] == "users" && $this->params['action'] == "index" ) echo 'class="active"'; ?> >
 					<?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> Employers', 
 					array('controller' => 'users', 'action' => 'index'), array('escape' => false, 'id' => 'employersNav') ); ?>
 			      </li>
-			      <li>
+			      <li <?php if( $this->params['controller'] == "users" && $this->params['action'] == "edit" ) echo 'class="active"'; ?> >
 					<?php echo $this->Html->link('<span class="glyphicon glyphicon-cog"></span> Account', 
 					array('controller' => 'users', 'action' => 'edit', AuthComponent::user('id') ), array('escape' => false, 'id' => 'accountNav') ); ?>
 			      </li>
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
 		      <li>
-		      	<?php echo $this->Html->link('<span class="glyphicon glyphicon-off"></span> Logout', 
+		      	<?php echo $this->Html->link('<span class="glyphicon glyphicon-log-out"></span> Logout', 
 		      	array('controller' => 'users', 'action' => 'logout'), array('escape' => false, 'id' => 'logoutNav') ); ?>
 		      </li>
 		    </ul>

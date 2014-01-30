@@ -59,12 +59,12 @@ class DescriptionsController extends AppController {
             	//save the description
             	$this->Description->Contact->save($this->request->data);
 
-                $this->Session->setFlash(__('Your job description has been saved.'));
+                $this->Session->setFlash(__('Your job description has been added and is currently waiting approval!'), 'info_message');
                 return $this->redirect(array('action' => 'index'));
 
             }
 
-            $this->Session->setFlash(__('Unable to add your job description.'));
+            $this->Session->setFlash(__('Unable to add your job description.'), 'danger_message');
         }
     }
 
@@ -137,10 +137,10 @@ class DescriptionsController extends AppController {
 	        	$this->Description->Contact->id = $contact['Contact']['id'];
 	        	$this->Description->Contact->save($this->request->data);
 
-	            $this->Session->setFlash(__('Your Description has been updated.'));
+	            $this->Session->setFlash(__('Your Description has been updated.'), 'info_message');
 	            return $this->redirect(array('action' => 'index'));
 	        }
-	        $this->Session->setFlash(__('Unable to update your Description.'));
+	        $this->Session->setFlash(__('Unable to update your Description.'), 'danger_message');
 	    }
 
 	    if (!$this->request->data) {
@@ -157,7 +157,7 @@ class DescriptionsController extends AppController {
 
 	    //get the description row based on the id passed in the method
 	    //if it exists, run the update, otherwise throw an exception
-	    if ( !$this->Description->read(null, $id) ) {
+	    if ( !($desc = $this->Description->read(null, $id)) ) {
 	    	throw new NotFoundException(__('Invalid Description'));
 	    }
 
@@ -166,6 +166,8 @@ class DescriptionsController extends AppController {
 		$this->Description->set( array('status_id' => 2, 'number' => ('number' + 1), 'is_posted' => 0)  );
 		//save the model, update the row in the db
 		$this->Description->save();
+
+		$this->Session->setFlash(__( '<strong>' . $desc['User']['username'] . "'s</strong> " . 'job description has been approved!'), 'success_message');
 
 		//redirect to the index controller method
 	    return $this->redirect(array('action' => 'index'));
@@ -181,7 +183,7 @@ class DescriptionsController extends AppController {
 
 	    //get the description row based on the id passed in the method
 	    //if it exists, run the update, otherwise throw an exception
-	    if ( !$this->Description->read(null, $id) ) {
+	    if ( !($desc = $this->Description->read(null, $id)) ) {
 	    	throw new NotFoundException(__('Invalid Description'));
 	    }
 
@@ -189,6 +191,8 @@ class DescriptionsController extends AppController {
 		$this->Description->set( array('status_id' => 3) );
 		//save the model, update the row in the db
 		$this->Description->save();
+
+		$this->Session->setFlash(__( '<strong>' . $desc['User']['username'] . "'s</strong> " . 'job description has been denied!'), 'danger_message');
 
 		//redirect to the index controller method
 	    return $this->redirect(array('action' => 'index'));
@@ -213,7 +217,7 @@ class DescriptionsController extends AppController {
 
 	    //get the description row based on the id passed in the method
 	    //if it exists, run the update, otherwise throw an exception
-	    if ( !$this->Description->read(null, $id) ) {
+	    if ( !($desc = $this->Description->read(null, $id)) ) {
 	    	throw new NotFoundException(__('Invalid Description'));
 	    }
 
@@ -221,6 +225,8 @@ class DescriptionsController extends AppController {
 		$this->Description->set( array('is_posted' => 1) );
 		//save the model, update the row in the db
 		$this->Description->save();
+
+		$this->Session->setFlash(__( '<strong>' . $desc['User']['username'] . "'s</strong> " . 'job has been posted!'), 'success_message');
 
 		//redirect to the index controller method
 	    return $this->redirect(array('action' => 'postings'));
@@ -237,7 +243,7 @@ class DescriptionsController extends AppController {
 
 	    //get the description row based on the id passed in the method
 	    //if it exists, run the update, otherwise throw an exception
-	    if ( !$this->Description->read(null, $id) ) {
+	    if ( !($desc = $this->Description->read(null, $id)) ) {
 	    	throw new NotFoundException(__('Invalid Description'));
 	    }
 
@@ -245,6 +251,8 @@ class DescriptionsController extends AppController {
 		$this->Description->set( array('is_posted' => 0) );
 		//save the model, update the row in the db
 		$this->Description->save();
+
+		$this->Session->setFlash(__( '<strong>' . $desc['User']['username'] . "'s</strong> " . 'job is not longer posted!'), 'danger_message');
 
 		//redirect to the index controller method
 	    return $this->redirect(array('action' => 'postings'));
