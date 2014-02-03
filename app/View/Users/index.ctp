@@ -1,14 +1,21 @@
 <div class="allUsers">
 
-    <div class="row">
+<?php
 
-        <?php
-            echo $this->Html->link('<i class="fa fa-plus"></i>', 
-                array('controller' => 'users', 'action' => 'add'), 
-                array('escape' => false, 'id' => 'newUser', 'class' => 'pull-right btn btn-info') );
-        ?>
+    if( $accessLevel == 1 ) { ?>
 
-    </div>
+        <div class="row">
+
+            <?php
+                echo $this->Html->link('<i class="fa fa-plus"></i>', 
+                    array('controller' => 'users', 'action' => 'add'), 
+                    array('escape' => false, 'id' => 'newUser', 'class' => 'pull-right btn btn-info') );
+            ?>
+
+        </div>
+    <?php
+    } 
+?>
 
     <h1 class="sectionHeading"><i class="fa fa-users"></i> Employers</h1>
 
@@ -20,8 +27,14 @@
                 <th>Username</th>
                 <th>Name</th>
                 <th>Department</th>
-                <th>Access Level</th>
-                <th>Action</th>
+                <?php 
+                    if( $accessLevel == 1 ) {
+
+                        echo '<th>Access Level</th>';
+
+                        echo '<th>Action</th>';
+                    } 
+                ?>
             </tr>
 
             <?php foreach ($users as $user): ?>
@@ -30,31 +43,37 @@
                         <td><?php echo $user['User']['username']; ?></td>
                         <td><?php echo $user['User']['first_name'] . ' ' . $user['User']['last_name']; ?></td>
                         <td><?php echo $user['Department']['name']; ?></td>
-                        <td>
-                        <?php 
-                            if( $user['User']['access_id'] == 1 ) {
+                        <?php
 
-                                echo $this->Html->link('<i class="fa fa-arrow-down"></i> Demote', 
-                                    array('action' => 'demote', $user['User']['id']), array('escape' => false, 'class' => 'btn btn-warning') );
+                            if( $accessLevel == 1 ) {
 
-                            }
-                            if( $user['User']['access_id'] == 2 ) {
+                                echo '<td>';
 
-                                echo $this->Html->link('<i class="fa fa-arrow-up"></i> Promote', 
-                                    array('action' => 'promote', $user['User']['id']), array('escape' => false, 'class' => 'btn btn-success') );
-                            }
-                        ?>
-                        </td>
+                                if( $user['User']['access_id'] == 1 ) {
 
-                        <td>     
-                            <?php
+                                    echo $this->Html->link('<i class="fa fa-arrow-down"></i> Demote', 
+                                        array('action' => 'demote', $user['User']['id']), array('escape' => false, 'class' => 'btn btn-warning') );
+
+                                }
+                                if( $user['User']['access_id'] == 2 ) {
+
+                                    echo $this->Html->link('<i class="fa fa-arrow-up"></i> Promote', 
+                                        array('action' => 'promote', $user['User']['id']), array('escape' => false, 'class' => 'btn btn-success') );
+                                }
+
+                                echo '</td><td>';
+
                                 echo $this->Html->link('<i class="fa fa-pencil-square-o"></i> Edit', 
                                     array('action' => 'edit', $user['User']['id']), array('escape' => false, 'class' => 'btn btn-info') );
-                            ?>
 
-                            <?php echo $this->Html->link('Delete', array('action' => 'delete', $user['User']['id']), array('class' => 'btn btn-danger') ); ?>
+                                echo ' ';
 
-                        </td>
+                                echo $this->Html->link('Delete', array('action' => 'delete', $user['User']['id']), array('class' => 'btn btn-danger') );
+
+                                echo '</td>';
+
+                            }
+                        ?>
 
                     </tr>
 

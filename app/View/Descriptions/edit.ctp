@@ -17,11 +17,10 @@
 		echo $this->Form->input('start_date', array('class' => 'form-control') );
 		echo $this->Form->input('end_date', array('class' => 'form-control') );
 		echo $this->Form->input('hrs_per_week', array('class' => 'form-control', 'label' => 'Hours Per Week') );
+		echo $this->Form->input('flexible', array('label' => 'Flexible Hours') );
 		echo $this->Form->input('shift_days', array('class' => 'form-control') );
 		echo $this->Form->input('shift_start_time', array('class' => 'form-control') );
 		echo $this->Form->input('shift_end_time', array('class' => 'form-control') );
-		echo $this->Form->input('wage', array('id' => 'wage', 'class' => 'form-control') );
-		echo $this->Form->input('flexible');
 
 		?>
 
@@ -30,6 +29,18 @@
 	<div class="col-lg-6">
 
 		<?php
+
+		echo $this->Form->input('wage', array('id' => 'wage', 'class' => 'form-control') );
+
+		$categories = array( 1 => 'Academic', 2 => 'Athletic', 3 => 'Clerical', 4 => 'Computer Technical', 5 => 'Community Service', 
+			6 => 'Food Service', 7 => 'Miscellaneous', 8 => 'Maintenance', 9 => 'Services', 10 => 'Telemarketing');
+		
+		echo $this->Form->input(
+		    'category_id',
+		    array('options' => $categories, 'empty' => '(Choose one)', 'class' => 'form-control', 'label' => 'Job Category')
+		);
+		
+		echo '<br />';
 
 		echo $this->Form->input('Contact.name', array('class' => 'form-control', 'label' => 'Contact Name') );
 		echo $this->Form->input('Contact.email', array('class' => 'form-control', 'label' => 'Contact Email') );
@@ -40,7 +51,12 @@
 
 		echo '<br />';
 
-		echo $this->Form->input('admin_notes', array('class' => 'form-control') );
+	    if( $accessLevel == 1 ) { //admin
+	        echo $this->Form->input('admin_notes', array('class' => 'form-control') );
+	    }
+	    else {
+	    	echo $this->Form->input('admin_notes', array('class' => 'form-control', 'disabled' => 'disabled') );
+	    }
 
 		?>
 
@@ -89,21 +105,27 @@
 
 </div>
 
-<div class="row">
+<?php 
 
-	<div class="col-lg-12">
+	if( $accessLevel == 1 ) { ?>
 
-		<?php
-			echo $this->Html->link('<i class="fa fa-check"></i> Approve Description', 
-				array('controller' => 'descriptions', 'action' => ''), 
-				array('escape' => false, 'class' => 'btn btn-success btn-lg') );
-		?>
+		<div class="row">
 
-	</div>	
+			<div class="col-lg-12">
+
+				<?php
+					echo $this->Html->link('<i class="fa fa-check"></i> Approve Description', 
+						array('controller' => 'descriptions', 'action' => ''), 
+						array('escape' => false, 'class' => 'btn btn-success btn-lg') );
+				?>
+
+			</div>	
 
 
-</div>
-
+		</div>
+	<?php
+	}
+	?>
 
 
 <script src="https://code.jquery.com/jquery.js"></script>
@@ -113,7 +135,7 @@
 
 <script>
 
-	$('#wage').popover( {'trigger': 'focus','placement': 'right','content': '$8.00, $8.10, $8.20, or $8.30+'} );
+	$('#wage').popover( {'trigger': 'focus','placement': 'top','content': '$8.00, $8.10, $8.20, or $8.30+'} );
 
 </script>
 

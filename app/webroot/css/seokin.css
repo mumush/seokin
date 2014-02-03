@@ -174,7 +174,7 @@ body {
 
   font-family: 'Raleway';
 
-  font-size: 1.3em;
+  font-size: 1.1em;
 
 }
 
@@ -223,7 +223,14 @@ body {
 
 }
 
-.editDescription input:focus, .editDescription textarea:focus, .addDescription input:focus, .addDescription textarea:focus {
+.editDescription select, .addDescription select {
+
+
+  border-radius: 1px;
+
+}
+
+.editDescription input:focus, .editDescription textarea:focus, .addDescription input:focus, .addDescription textarea:focus, .editDescription select:focus, .addDescription select:focus {
 
   border: 1px solid rgba(243, 110, 33, .5);
 
@@ -305,7 +312,7 @@ body {
 
 }
 
-#editDeptOptions {
+#editDeptOptions, #addDeptOptions {
 
   /*remove focus border*/
   outline: none;
@@ -322,7 +329,7 @@ body {
 
 }
 
-#editDeptOptions:focus {
+#editDeptOptions:focus, .addDeptOptions:focus {
 
   border: 1px solid rgba(243, 110, 33, .5);
 

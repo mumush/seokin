@@ -1,7 +1,13 @@
 <div class="allDescriptions">
 
-    <?php echo $this->Session->flash(); ?>
+    <div class="row">
 
+        <?php echo $this->Session->flash(); ?>
+
+        <?php echo $accessLevel;?>
+
+    </div>
+    
     <div class="row">
 
         <?php
@@ -12,11 +18,6 @@
 
     </div>
 
-    <div class="row">
-
-            <?php echo $this->Session->flash(); ?>
-
-    </div>
 
 
 <h1 class="sectionHeading"><i class="fa fa-list"></i> Pending Descriptions</h1>
@@ -29,7 +30,12 @@
             <th>Wage</th>
             <th>User</th>
             <th>Contact Email</th>
-            <th>Approve/Deny</th>
+            <?php 
+                if( $accessLevel == 1 ) {
+
+                    echo '<th>Approve/Deny</th>';
+                } 
+            ?>
             <th>Edit</th>
         </tr>
 
@@ -43,17 +49,20 @@
                     <td><?php echo $desc['Description']['wage']; ?></td>
                     <td><?php echo $desc['User']['first_name'] . ' ' . $desc['User']['last_name']; ?></td>
                     <td><?php echo $desc['Contact']['email']; ?></td>
-                    <td>
-
                     <?php
 
-                        echo $this->Html->link('Approve', array('controller' => 'descriptions', 'action' => 'approve', $desc['Description']['id']), array('class' => 'btn btn-success') ) 
-                        . ' ' .
-                        $this->Html->link('Deny', array('controller' => 'descriptions', 'action' => 'deny', $desc['Description']['id']), array('class' => 'btn btn-danger') );
+                        if( $accessLevel == 1 ) {
+
+                            echo '<td>';
+
+                            echo $this->Html->link('Approve', array('controller' => 'descriptions', 'action' => 'approve', $desc['Description']['id']), array('class' => 'btn btn-success') ) 
+                            . ' ' .
+                            $this->Html->link('Deny', array('controller' => 'descriptions', 'action' => 'deny', $desc['Description']['id']), array('class' => 'btn btn-danger') );
+
+                            echo '</td>';
+                        }
 
                     ?>
-
-                    </td>
                     <td>
                         <?php echo $this->Html->link('<i class="fa fa-pencil-square-o"></i> Edit', 
                         array('controller' => 'descriptions', 'action' => 'edit', $desc['Description']['id']), array('escape' => false, 'class' => 'btn btn-info') ); ?>

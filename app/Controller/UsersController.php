@@ -12,7 +12,14 @@ class UsersController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         // Allow users to register and logout.
-        $this->Auth->allow('add', 'logout');
+        $this->Auth->allow('register', 'logout');
+
+        //get the user row in the Users table based on the cached id in session
+        $user = $this->User->findById( $this->Auth->user('id') );
+        //get the access level from the logged in user
+        $accessLevel = $user['User']['access_id'];
+
+        $this->set('accessLevel', $accessLevel);
 
     }
 
@@ -22,7 +29,7 @@ class UsersController extends AppController {
 
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
-                return $this->redirect($this->Auth->redirect());
+                return $this->redirect( array('controller' => 'descriptions', 'actions' => 'index') );
             }
             $this->Session->setFlash(__('Invalid username or password'), 'danger_message');
         }
@@ -135,7 +142,7 @@ class UsersController extends AppController {
 
     }
 
-    public function edit($id = null) {
+    public function edit( $id = null ) {
 
         $this->layout = 'seokin';
 
@@ -144,7 +151,6 @@ class UsersController extends AppController {
             throw new NotFoundException(__('Invalid user'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
-
 
             //get the department name entered from the POST variable with name "department_id"
             $deptName = $this->request->data['User']['department_id'];

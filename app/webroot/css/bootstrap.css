@@ -5340,6 +5340,10 @@ a.thumbnail.active {
 
   border-radius: 2px; /*rhoff37*/
 
+  font-family: 'Roboto Condensed'; /*rhoff37*/
+  font-size: 1.2em; /*rhoff37*/
+  font-weight: 100;
+
 }
 
 .alert h4 {

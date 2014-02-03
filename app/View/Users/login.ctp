@@ -15,6 +15,19 @@
 
 	<?php echo $this->Form->end(); ?>
 
-	<?php echo $this->Session->flash('auth'); ?>
+	<?php //echo $this->Session->flash('auth'); ?>
+
+	<br />
+
+	<div class="row">
+
+		<div class="col-lg-6 col-lg-offset-3" style="font-size: 1.2em;">
+
+			<?php echo $this->Session->flash(); ?>
+
+		</div>
+
+
+	</div>
 
 </div>

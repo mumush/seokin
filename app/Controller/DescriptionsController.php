@@ -11,14 +11,28 @@ class DescriptionsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
 
+
+    	//get the user row in the Users table based on the cached id in session
+    	$user = $this->Description->User->findById( $this->Auth->user('id') );
+    	//get the access level from the logged in user
+    	$accessLevel = $user['User']['access_id'];
+
+        $this->set('accessLevel', $accessLevel);
+
         $this->layout = 'seokin';
+
+    }
+
+    public function dashboard() {
+
+
 
     }
 
 
     public function index() {
 
-        $this->set('descriptions', $this->Description->find('all'));
+    	$this->set('descriptions', $this->Description->find('all'));
 
     }
 
@@ -137,10 +151,10 @@ class DescriptionsController extends AppController {
 	        	$this->Description->Contact->id = $contact['Contact']['id'];
 	        	$this->Description->Contact->save($this->request->data);
 
-	            $this->Session->setFlash(__('Your Description has been updated.'), 'info_message');
+	            $this->Session->setFlash(__('Job Description has been updated.'), 'info_message');
 	            return $this->redirect(array('action' => 'index'));
 	        }
-	        $this->Session->setFlash(__('Unable to update your Description.'), 'danger_message');
+	        $this->Session->setFlash(__('Unable to Update Job Description.'), 'danger_message');
 	    }
 
 	    if (!$this->request->data) {
@@ -167,7 +181,7 @@ class DescriptionsController extends AppController {
 		//save the model, update the row in the db
 		$this->Description->save();
 
-		$this->Session->setFlash(__( '<strong>' . $desc['User']['username'] . "'s</strong> " . 'job description has been approved!'), 'success_message');
+		$this->Session->setFlash(__( $desc['User']['username'] . "'s " . 'job description has been approved!'), 'success_message');
 
 		//redirect to the index controller method
 	    return $this->redirect(array('action' => 'index'));
@@ -192,7 +206,7 @@ class DescriptionsController extends AppController {
 		//save the model, update the row in the db
 		$this->Description->save();
 
-		$this->Session->setFlash(__( '<strong>' . $desc['User']['username'] . "'s</strong> " . 'job description has been denied!'), 'danger_message');
+		$this->Session->setFlash(__( $desc['User']['username'] . "'s " . 'job description has been denied!'), 'danger_message');
 
 		//redirect to the index controller method
 	    return $this->redirect(array('action' => 'index'));
@@ -226,7 +240,7 @@ class DescriptionsController extends AppController {
 		//save the model, update the row in the db
 		$this->Description->save();
 
-		$this->Session->setFlash(__( '<strong>' . $desc['User']['username'] . "'s</strong> " . 'job has been posted!'), 'success_message');
+		$this->Session->setFlash(__( $desc['User']['username'] . "'s " . 'job has been posted!'), 'success_message');
 
 		//redirect to the index controller method
 	    return $this->redirect(array('action' => 'postings'));
@@ -252,7 +266,7 @@ class DescriptionsController extends AppController {
 		//save the model, update the row in the db
 		$this->Description->save();
 
-		$this->Session->setFlash(__( '<strong>' . $desc['User']['username'] . "'s</strong> " . 'job is not longer posted!'), 'danger_message');
+		$this->Session->setFlash(__( $desc['User']['username'] . "'s " . 'job is not longer posted!'), 'danger_message');
 
 		//redirect to the index controller method
 	    return $this->redirect(array('action' => 'postings'));

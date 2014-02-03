@@ -18,7 +18,7 @@
 				        echo $this->Form->input('last_name', array('class' => 'form-control input-lg')); ?>
 				        <label>Department</label>
 				        <?php 
-				        	echo $this->Form->input('department_id', array('class' => 'form-control input-lg', 'type' => 'text', 'id' => 'editDeptOptions', 'label' => false));
+				        	echo $this->Form->input('department_id', array('class' => 'form-control input-lg', 'type' => 'text', 'id' => 'addDeptOptions', 'label' => false));
 			    		?>
 			    </fieldset>
 
@@ -40,7 +40,7 @@
 
 <script>
 
-	$('#editDeptOptions').typeahead({
+	$('#addDeptOptions').typeahead({
 		name: 'accounts',
 		prefetch: '../app/webroot/files/depts.json'
 	});
