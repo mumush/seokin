@@ -2262,7 +2262,7 @@ textarea.input-lg {
   cursor: pointer;
   background-image: none;
   border: 1px solid transparent;
-  border-radius: 3px; /*rhoff37*/
+  border-radius: 2px; /*rhoff37*/
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;

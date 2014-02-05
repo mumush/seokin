@@ -34,7 +34,7 @@
 		    </button>
 
 			<?php echo $this->Html->link('Seokin', 
-			array('controller' => 'descriptions', 'action' => 'index'), array('escape' => false, 'class' => 'navbar-brand') ); ?>
+			array('controller' => 'descriptions', 'action' => 'dashboard'), array('escape' => false, 'class' => 'navbar-brand') ); ?>
 
 		  </div>
 
@@ -44,11 +44,14 @@
 		  <!-- Collect the nav links, forms, and other content for toggling -->
 		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		    <ul class="nav navbar-nav">
-			      <li><a id="dashNav" href="#"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
+			      <li <?php if( $this->params['controller'] == "descriptions" && $this->params['action'] == "dashboard" ) echo 'class="active"'; ?> >
+					<?php echo $this->Html->link('<span class="glyphicon glyphicon-home"></span> Dashboard', 
+					array('controller' => 'descriptions', 'action' => 'dashboard'), array('escape' => false, 'id' => 'dashNav') ); ?>
+				  </li>
 			      <li <?php if( $this->params['controller'] == "descriptions" && $this->params['action'] == "index" ) echo 'class="active"'; ?> >
 					<?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> Descriptions', 
 					array('controller' => 'descriptions', 'action' => 'index'), array('escape' => false, 'id' => 'descripsNav') ); ?>
-				  </li>	
+				  </li>
 				  <li <?php if( $this->params['controller'] == "descriptions" && $this->params['action'] == "postings" ) echo 'class="active"'; ?> >
 					<?php echo $this->Html->link('<span class="glyphicon glyphicon-pushpin"></span> Postings', 
 					array('controller' => 'descriptions', 'action' => 'postings'), array('escape' => false, 'id' => 'postingsNav') ); ?>
@@ -64,7 +67,7 @@
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
 		      <li>
-		      	<?php echo $this->Html->link('<span class="glyphicon glyphicon-log-out"></span> Logout', 
+		      	<?php echo $this->Html->link('<span class="glyphicon glyphicon-log-out" style="padding-right: 20px;"></span> ' . AuthComponent::user('username'), 
 		      	array('controller' => 'users', 'action' => 'logout'), array('escape' => false, 'id' => 'logoutNav') ); ?>
 		      </li>
 		    </ul>

@@ -170,11 +170,13 @@ body {
 
 }
 
-.allDescriptions table tr:first-child, .allUsers table tr:first-child {
+.allDescriptions table th, .allUsers table th {
 
-  font-family: 'Raleway';
-
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
   font-size: 1.1em;
+  color: #33332D;
 
 }
 
@@ -209,9 +211,11 @@ body {
 
 .editDescription label, .addDescription label {
 
-  font-family: 'Raleway';
-
-  font-size: 1.1em;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.15em;
+  color: #33332D;
 
 }
 
@@ -234,9 +238,9 @@ body {
 
   border: 1px solid rgba(243, 110, 33, .5);
 
-  -moz-box-shadow:    3px 3px 5px 6px rgba(255, 165, 0, .9);
-  -webkit-box-shadow: 3px 3px 5px 6px rgba(255, 165, 0, .9);
-  box-shadow:       inset 0 0 3px rgba(255, 165, 0, .9);
+  -moz-box-shadow:    inset 0 0 2px rgba(255, 165, 0, .9);
+  -webkit-box-shadow: inset 0 0 2px rgba(255, 165, 0, .9);
+  box-shadow:       inset 0 0 2px rgba(255, 165, 0, .9);
 
 }
 
@@ -306,9 +310,11 @@ body {
 
 .editUser label, .addUser label {
 
-  font-family: 'Raleway';
-
-  font-size: 1.3em;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2em;
+  color: #33332D;
 
 }
 
@@ -389,5 +395,31 @@ body {
   font-weight: 400;
 
   font-size: 1.4em;
+
+}
+
+.dashList {
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+.dashList li {
+
+  margin-bottom: 2%;
+
+}
+
+#dashNewDesc {
+
+  margin-right: 20px;
+
+}
+
+#dashNewUser {
+
+  margin-left: 20px;
 
 }

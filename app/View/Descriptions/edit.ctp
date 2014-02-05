@@ -96,9 +96,9 @@
 	<div class="col-lg-6">
 
 		<?php
-			echo $this->Html->link('<i class="fa fa-trash-o"></i> Discard Changes', 
+			echo $this->Html->link('Discard Changes', 
 				array('controller' => 'descriptions', 'action' => 'index'), 
-				array('escape' => false, 'class' => 'btn btn-danger btn-lg') );
+				array('class' => 'btn btn-danger btn-lg') );
 		?>
 
 	</div>

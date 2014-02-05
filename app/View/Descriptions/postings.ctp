@@ -1,17 +1,23 @@
 <div class="allDescriptions">
 
-    <h1 class="sectionHeading"><i class="fa fa-list-alt"></i> Job Postings</h1>
+    <div class="row">
 
-    <?php echo $this->Session->flash(); ?>
+        <?php echo $this->Session->flash(); ?>
+
+        <?php echo $accessLevel;?>
+
+    </div>
+
+    <h1 class="sectionHeading"><i class="fa fa-list-alt"></i> Job Postings</h1>
 
     <div class="table-responsive">
         <table class="table table-bordered">
             <tr>
                 <th>Title</th>
                 <th>Department</th>
-                <th>Wage</th>
+                <th>Job Number</th>
                 <th>User</th>
-                <th>Contact Email</th>
+                <th>Contact Name</th>
                 <?php if ( $accessLevel == 1 ) {echo '<th>Action</th>';} ?>
                 <?php if ( $accessLevel == 2 ) {echo '<th>Posted</th>';} ?>
                 <th>Edit</th>
@@ -22,9 +28,9 @@
                 <tr>
                     <td><?php echo $desc['Description']['title']; ?></td>
                     <td><?php echo $desc['Department']['name']; ?></td>
-                    <td><?php echo $desc['Description']['wage']; ?></td>
+                    <td><?php echo $desc['Description']['number']; ?></td>
                     <td><?php echo $desc['User']['first_name'] . ' ' . $desc['User']['last_name']; ?></td>
-                    <td><?php echo $desc['Contact']['email']; ?></td>
+                    <td><?php echo $desc['Contact']['name']; ?></td>
                     <?php
                         if( $accessLevel == 1 ) {
 

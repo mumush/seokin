@@ -25,7 +25,17 @@ class DescriptionsController extends AppController {
 
     public function dashboard() {
 
+		$pending = $this->Description->find('all', array( 'conditions' => array('Description.status_id' => 1), 'order' => array('Description.id' => 'DESC'), 'limit' => 5 ));    	
+		$approved = $this->Description->find('all', array( 'conditions' => array('Description.status_id' => 2), 'order' => array('Description.id' => 'DESC'), 'limit' => 5 ));
+		$denied = $this->Description->find('all', array( 'conditions' => array('Description.status_id' => 3), 'order' => array('Description.id' => 'DESC'), 'limit' => 5 ));
 
+		$users = $this->Description->User->find('all', array( 'limit' => 5, 'order' => array('User.id' => 'DESC') ));
+
+		$this->set('pending', $pending );
+		$this->set('approved', $approved );
+		$this->set('denied', $denied );
+
+		$this->set('users', $users );
 
     }
 
