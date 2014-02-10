@@ -28,9 +28,17 @@
 
 	<div class="col-lg-6">
 
-		<?php
+		<label style="margin-bottom: 1%;" for="wage">Wage</label>
 
-		echo $this->Form->input('wage', array('id' => 'wage', 'class' => 'form-control') );
+		<div class="input-group">
+			<span class="input-group-addon">$</span>
+
+			<?php echo $this->Form->input('wage', array('id' => 'wage', 'class' => 'form-control', 'label' => false) ); ?>
+		</div>
+
+		<br />
+
+		<?php
 
 		$categories = array( 1 => 'Academic', 2 => 'Athletic', 3 => 'Clerical', 4 => 'Computer Technical', 5 => 'Community Service', 
 			6 => 'Food Service', 7 => 'Miscellaneous', 8 => 'Maintenance', 9 => 'Services', 10 => 'Telemarketing');
@@ -107,25 +115,29 @@
 
 <?php 
 
-	if( $accessLevel == 1 ) { ?>
+	if ( $this->data['Description']['status_id'] == 1 ) {
 
-		<div class="row">
+		if( $accessLevel == 1 ) { ?>
 
-			<div class="col-lg-12">
+			<div class="row">
 
-				<?php
-					echo $this->Html->link('<i class="fa fa-check"></i> Approve Description', 
-						array('controller' => 'descriptions', 'action' => ''), 
-						array('escape' => false, 'class' => 'btn btn-success btn-lg') );
-				?>
+				<div class="col-lg-12">
 
-			</div>	
+					<?php
+						echo $this->Html->link('<i class="fa fa-check"></i> Approve Description', 
+							array('controller' => 'descriptions', 'action' => ''), 
+							array('escape' => false, 'class' => 'btn btn-success btn-lg') );
+					?>
+
+				</div>	
 
 
-		</div>
-	<?php
+			</div>
+		<?php
+		}
 	}
-	?>
+
+?>
 
 
 <script src="https://code.jquery.com/jquery.js"></script>

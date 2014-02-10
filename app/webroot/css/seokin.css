@@ -102,38 +102,88 @@ body {
 
 /*TOP NAVIGATION*/
 
-#dashNav, #descripsNav, #postingsNav, #employersNav, #accountNav, #logoutNav {
+#hiddenDash, #hiddenDescrips, #hiddenPostings, #hiddenEmployers, #hiddenAccount, #hiddenLogout {
+
+  display: none;
+
+  -webkit-transition: display .2s ease-in-out;
+  transition: display .2s ease-in-out;
+
+}
+
+/*MEDIA QUERIES*/
+
+@media (max-width: 1140px) {
+
+  .navbar .nav li a {
+
+    display: none;
+
+  }
+
+  #hiddenDash, #hiddenDescrips, #hiddenPostings, #hiddenEmployers, #hiddenAccount, #hiddenLogout {
+
+    display: block;
+
+  }
+
+  .navbar-nav {
+
+    margin-left: 20px;
+
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  #hiddenDash, #hiddenDescrips, #hiddenPostings, #hiddenEmployers, #hiddenAccount, #hiddenLogout {
+
+    display: none;
+
+  }
+
+  #dashNav, #descripsNav, #postingsNav, #employersNav, #accountNav, #logoutNav {
+
+    display: block;
+
+  }
+
+} /*END MEDIA QUERIES*/
+
+
+#dashNav, #descripsNav, #postingsNav, #employersNav, #accountNav, #logoutNav, #hiddenDash, #hiddenDescrips, #hiddenPostings, #hiddenEmployers, #hiddenAccount, #hiddenLogout {
 
   -webkit-transition: background .9s ease-out;
   transition: background .9s ease-out;
 
 }
 
-#dashNav:hover {
+#dashNav:hover, #hiddenDash:hover {
 
   background: #f5f5f5;
 
 }
 
-#descripsNav:hover {
+#descripsNav:hover, #hiddenDescrips:hover {
 
   background: #FCD65A;
 
 }
 
-#postingsNav:hover {
+#postingsNav:hover, #hiddenPostings:hover {
 
   background: #17C060;
 
 }
 
-#employersNav:hover {
+#employersNav:hover, #hiddenEmployers:hover {
 
   background: #72F4CF;
 
 }
 
-#accountNav:hover {
+#accountNav:hover, #hiddenAccount:hover {
 
   background: #F94D3E;
 
@@ -145,7 +195,7 @@ body {
 
 }
 
-#logoutNav:hover {
+#logoutNav:hover, #hiddenLogout:hover {
 
   background: #f5f5f5;
 
@@ -335,7 +385,7 @@ body {
 
 }
 
-#editDeptOptions:focus, .addDeptOptions:focus {
+#editDeptOptions:focus, #addDeptOptions:focus {
 
   border: 1px solid rgba(243, 110, 33, .5);
 
@@ -398,6 +448,23 @@ body {
 
 }
 
+.editUser a {
+
+  margin-top: 1%;
+  margin-bottom: 4%;
+  padding-top: 20px;
+
+  height: 70px;
+
+  border-radius: 2px;
+
+  font-family: 'Raleway';
+  font-weight: 400;
+
+  font-size: 1.4em;
+
+}
+
 .dashList {
 
   list-style: none;
@@ -421,5 +488,13 @@ body {
 #dashNewUser {
 
   margin-left: 20px;
+
+}
+
+.divCounts div h2 {
+
+  font-size: 2.3em;
+  font-weight: 100;
+  font-family: 'Dosis';
 
 }

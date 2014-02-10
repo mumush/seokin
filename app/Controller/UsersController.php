@@ -83,8 +83,26 @@ class UsersController extends AppController {
 
         $this->layout = 'seokin';
 
-        $this->User->recursive = 0;
-        $this->set('users', $this->paginate());
+        //get the user row in the Users table based on the cached id in session
+        $user = $this->User->findById( $this->Auth->user('id') );
+        //get the access level from the logged in user
+        $accessLevel = $user['User']['access_id'];
+        //get the department_id from the logged in user
+        $deptID = $user['User']['department_id'];
+
+        if( $accessLevel == 2 ) {
+
+            $users = $this->User->find('all', array( 'conditions' => array('User.department_id' => $deptID) ) );
+
+            $this->set('users', $users);
+
+        }
+        else {
+
+            $this->User->recursive = 0;
+            $this->set('users', $this->paginate());
+
+        }
 
     }
 

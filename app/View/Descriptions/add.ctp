@@ -28,9 +28,17 @@
 
 		<div class="col-lg-6">
 
-			<?php
+			<label style="margin-bottom: 1%;" for="wage">Wage</label>
 
-				echo $this->Form->input('wage', array('id' => 'wage', 'class' => 'form-control'));
+			<div class="input-group">
+				<span class="input-group-addon">$</span>
+
+				<?php echo $this->Form->input('wage', array('id' => 'wage', 'class' => 'form-control', 'label' => false) ); ?>
+			</div>
+
+			<br />
+
+			<?php
 
 				$categories = array( 1 => 'Academic', 2 => 'Athletic', 3 => 'Clerical', 4 => 'Computer Technical', 5 => 'Community Service', 
 					6 => 'Food Service', 7 => 'Miscellaneous', 8 => 'Maintenance', 9 => 'Services', 10 => 'Telemarketing');

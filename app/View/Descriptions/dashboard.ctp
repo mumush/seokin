@@ -1,17 +1,20 @@
-<div class="allDescriptions">
+<div class="allDash">
 
     <div class="row">
 
         <?php
             echo $this->Html->link('<i class="fa fa-plus"></i> <i class="fa fa-user"></i>', 
                 array('controller' => 'users', 'action' => 'add'), 
-                array('escape' => false, 'id' => 'dashNewUser', 'class' => 'pull-left btn btn-info') );
+                array('escape' => false, 'id' => 'dashNewUser', 'class' => 'pull-left btn btn-info', 
+                'data-original-title' => 'Add New User', 'data-placement' => 'bottom', 'data-toggle' => 'tooltip') );
+
         ?>
 
         <?php
             echo $this->Html->link('<i class="fa fa-plus"></i> <i class="fa fa-list"></i>', 
                 array('controller' => 'descriptions', 'action' => 'add'), 
-                array('escape' => false, 'id' => 'dashNewDesc', 'class' => 'pull-right btn btn-info') );
+                array('escape' => false, 'id' => 'dashNewDesc', 'class' => 'pull-right btn btn-info', 
+                'data-original-title' => 'Add New Description', 'data-placement' => 'bottom', 'data-toggle' => 'tooltip') );
         ?>
 
     </div>
@@ -62,6 +65,17 @@
                     </ul>
                     
                 </div>
+
+                <div class="panel-footer">
+                    
+                    <?php
+                        echo $this->Html->link('Pending Descriptions <i class="fa fa-chevron-right"></i>', 
+                            array('controller' => 'descriptions', 'action' => 'index'), 
+                            array('escape' => false, 'class' => 'btn btn-info', 'style' => 'width: 100%; border-radius: 2px;') );
+                    ?>
+
+                </div>
+
             </div>
 
         </div>
@@ -84,6 +98,17 @@
                     </ul>
                     
                 </div>
+
+                <div class="panel-footer">
+                    
+                    <?php
+                        echo $this->Html->link('Approved Descriptions <i class="fa fa-chevron-right"></i>', 
+                            array('controller' => 'descriptions', 'action' => 'index'), 
+                            array('escape' => false, 'class' => 'btn btn-success', 'style' => 'width: 100%; border-radius: 2px;') );
+                    ?>
+
+                </div>
+
             </div>
             
         </div>
@@ -106,6 +131,17 @@
                     </ul>
                     
                 </div>
+
+                <div class="panel-footer">
+                    
+                    <?php
+                        echo $this->Html->link('Denied Descriptions <i class="fa fa-chevron-right"></i>', 
+                            array('controller' => 'descriptions', 'action' => 'index'), 
+                            array('escape' => false, 'class' => 'btn btn-danger', 'style' => 'width: 100%; border-radius: 2px;') );
+                    ?>
+
+                </div>
+
             </div>
             
         </div>
@@ -134,37 +170,53 @@
                     
                 </div>
 
-                <div class="panel-footer">Total Employers: 200</div>
+            </div>
+            
+        </div>
 
+        <div class="col-md-4">
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-book"></i> Recently Added Contacts</h3> <!--give a link to the description-->
+                </div>
+                <div class="panel-body">
+
+                    <ul class="dashList">
+                    <?php foreach ($contacts as $contact): ?>
+                        <li>
+                        <?php echo $contact['Contact']['name'] . ' at ' . '<strong>' . $contact['Contact']['email'] . '</strong>'; ?>
+                        </li>
+                    <?php endforeach; ?>
+                    </ul>
+                    
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="col-md-4">
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Real Time Statistics</h3> <!--give a link to the description-->
+                </div>
+                <div class="panel-body">
+
+                    <ul class="dashList">
+                        <li>Total Pending Descriptions: 139</li>
+                        <li>Total Approved Descriptions: 170</li>
+                        <li>Total Denied Descriptions: 23</li>
+                        <li>Job Postings: 67</li>
+                        <li>Registered Employers: 104</li>
+                    </ul>
+                    
+                </div>
             </div>
             
         </div>
 
 
     </div> <!--END SECOND ROW-->
-
-    <div class="row">
-
-        <div class="col-md-4">
-
-            <h2>Total Descriptions: 139</h2>
-
-        </div>
-
-        <div class="col-md-4">
-
-            <h2>Posted Jobs: 37</h2>
-
-        </div>
-
-        <div class="col-md-4">
-
-            <h2>Unposted Jobs: 14</h2>
-
-        </div>
-
-
-    </div>
-
 
 </div>

@@ -11,9 +11,9 @@ class DescriptionsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
 
-
     	//get the user row in the Users table based on the cached id in session
     	$user = $this->Description->User->findById( $this->Auth->user('id') );
+
     	//get the access level from the logged in user
     	$accessLevel = $user['User']['access_id'];
 
@@ -25,24 +25,83 @@ class DescriptionsController extends AppController {
 
     public function dashboard() {
 
-		$pending = $this->Description->find('all', array( 'conditions' => array('Description.status_id' => 1), 'order' => array('Description.id' => 'DESC'), 'limit' => 5 ));    	
-		$approved = $this->Description->find('all', array( 'conditions' => array('Description.status_id' => 2), 'order' => array('Description.id' => 'DESC'), 'limit' => 5 ));
-		$denied = $this->Description->find('all', array( 'conditions' => array('Description.status_id' => 3), 'order' => array('Description.id' => 'DESC'), 'limit' => 5 ));
+    	//get the user row in the Users table based on the cached id in session
+    	$user = $this->Description->User->findById( $this->Auth->user('id') );
+    	//get the access level from the logged in user
+    	$accessLevel = $user['User']['access_id'];
+    	//get the department_id from the logged in user
+    	$deptID = $user['User']['department_id'];
 
-		$users = $this->Description->User->find('all', array( 'limit' => 5, 'order' => array('User.id' => 'DESC') ));
+    	if( $accessLevel == 2 ) {
 
-		$this->set('pending', $pending );
-		$this->set('approved', $approved );
-		$this->set('denied', $denied );
+    		$pending = $this->Description->find('all', array( 'conditions' => 
+    			array('Description.status_id' => 1, 'AND' => array('Description.department_id' => $deptID) ), 'order' => array('Description.id' => 'DESC'), 'limit' => 5 ));
 
-		$this->set('users', $users );
+    		$approved = $this->Description->find('all', array( 'conditions' => 
+    			array('Description.status_id' => 2, 'AND' => array('Description.department_id' => $deptID) ), 'order' => array('Description.id' => 'DESC'), 'limit' => 5 ));
+
+    		$denied = $this->Description->find('all', array( 'conditions' => 
+    			array('Description.status_id' => 3, 'AND' => array('Description.department_id' => $deptID) ), 'order' => array('Description.id' => 'DESC'), 'limit' => 5 ));
+
+			$users = $this->Description->User->find('all', array( 'limit' => 5, 'order' => array('User.id' => 'DESC') ));
+
+			$contacts = $this->Description->Contact->find('all', array( 'limit' => 5, 'order' => array('Contact.id' => 'DESC') ));
+
+			$this->set('pending', $pending );
+			$this->set('approved', $approved );
+			$this->set('denied', $denied );
+
+			$this->set('users', $users );
+
+			$this->set('contacts', $contacts );
+
+    	}
+    	else {
+
+			$pending = $this->Description->find('all', array( 'conditions' => array('Description.status_id' => 1), 'order' => array('Description.id' => 'DESC'), 'limit' => 5 ));    	
+			$approved = $this->Description->find('all', array( 'conditions' => array('Description.status_id' => 2), 'order' => array('Description.id' => 'DESC'), 'limit' => 5 ));
+			$denied = $this->Description->find('all', array( 'conditions' => array('Description.status_id' => 3), 'order' => array('Description.id' => 'DESC'), 'limit' => 5 ));
+
+			$users = $this->Description->User->find('all', array( 'limit' => 5, 'order' => array('User.id' => 'DESC') ));
+
+			$contacts = $this->Description->Contact->find('all', array( 'limit' => 5, 'order' => array('Contact.id' => 'DESC') ));
+
+			$this->set('pending', $pending );
+			$this->set('approved', $approved );
+			$this->set('denied', $denied );
+
+			$this->set('users', $users );
+
+			$this->set('contacts', $contacts );
+
+    	}
 
     }
 
 
     public function index() {
 
-    	$this->set('descriptions', $this->Description->find('all'));
+    	//get the user row in the Users table based on the cached id in session
+    	$user = $this->Description->User->findById( $this->Auth->user('id') );
+    	//get the access level from the logged in user
+    	$accessLevel = $user['User']['access_id'];
+    	//get the department_id from the logged in user
+    	$deptID = $user['User']['department_id'];
+
+    	//if the user has employer access, filter the descriptions by the users department
+    	if( $accessLevel == 2 ) {
+
+	    	$descriptions = $this->Description->find('all', array( 'conditions' => array('Description.department_id' => $deptID) ) );
+
+	    	$this->set('descriptions', $descriptions );
+
+    	}
+    	//if they're an admin, show all of the descriptions, no filter
+    	else {
+
+    		$this->set('descriptions', $this->Description->find('all') );
+
+    	}
 
     }
 
@@ -227,7 +286,28 @@ class DescriptionsController extends AppController {
 	//description has been approved and is now considered a job and is initially posted (job posting)
     public function postings() {
 
-		$this->set('descriptions', $this->Description->find('all', array('conditions' => array('status_id' => 2))) );
+    	//get the user row in the Users table based on the cached id in session
+    	$user = $this->Description->User->findById( $this->Auth->user('id') );
+    	//get the access level from the logged in user
+    	$accessLevel = $user['User']['access_id'];
+    	//get the department_id from the logged in user
+    	$deptID = $user['User']['department_id'];
+
+    	//if the user has employer access, filter the approved descriptions by the users department
+    	if( $accessLevel == 2 ) {
+
+	    	$descriptions = $this->Description->find('all', array( 
+	    		'conditions' => array('Description.department_id' => $deptID, 'AND' => array('Description.status_id' => 2)) ) );
+
+	    	$this->set('descriptions', $descriptions );
+
+    	}
+    	//if they're an admin, show all of the approved descriptions, no filter
+    	else {
+
+    		$this->set('descriptions', $this->Description->find('all', array('conditions' => array('status_id' => 2))) );
+
+    	}
 
     }
 

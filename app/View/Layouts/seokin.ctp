@@ -44,31 +44,63 @@
 		  <!-- Collect the nav links, forms, and other content for toggling -->
 		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		    <ul class="nav navbar-nav">
-			      <li <?php if( $this->params['controller'] == "descriptions" && $this->params['action'] == "dashboard" ) echo 'class="active"'; ?> >
+			      <li id="dash" <?php if( $this->params['controller'] == "descriptions" && $this->params['action'] == "dashboard" ) echo 'class="active"'; ?> >
 					<?php echo $this->Html->link('<span class="glyphicon glyphicon-home"></span> Dashboard', 
 					array('controller' => 'descriptions', 'action' => 'dashboard'), array('escape' => false, 'id' => 'dashNav') ); ?>
+
+					<?php echo $this->Html->link('<span class="glyphicon glyphicon-home"></span>', 
+					array('controller' => 'descriptions', 'action' => 'dashboard'), array('escape' => false, 'id' => 'hiddenDash', 
+					'data-original-title' => 'Dashboard', 'data-placement' => 'bottom', 'data-toggle' => 'tooltip') ); ?>
 				  </li>
-			      <li <?php if( $this->params['controller'] == "descriptions" && $this->params['action'] == "index" ) echo 'class="active"'; ?> >
+			      <li id="descriptions" <?php if( $this->params['controller'] == "descriptions" && $this->params['action'] == "index" ) echo 'class="active"'; ?> >
 					<?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> Descriptions', 
 					array('controller' => 'descriptions', 'action' => 'index'), array('escape' => false, 'id' => 'descripsNav') ); ?>
+
+					<?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>', 
+					array('controller' => 'descriptions', 'action' => 'index'), array('escape' => false, 'id' => 'hiddenDescrips', 
+					'data-original-title' => 'Descriptions', 'data-placement' => 'bottom', 'data-toggle' => 'tooltip') ); ?>
 				  </li>
-				  <li <?php if( $this->params['controller'] == "descriptions" && $this->params['action'] == "postings" ) echo 'class="active"'; ?> >
+				  <li id="postings" <?php if( $this->params['controller'] == "descriptions" && $this->params['action'] == "postings" ) echo 'class="active"'; ?> >
 					<?php echo $this->Html->link('<span class="glyphicon glyphicon-pushpin"></span> Postings', 
 					array('controller' => 'descriptions', 'action' => 'postings'), array('escape' => false, 'id' => 'postingsNav') ); ?>
+
+					<?php echo $this->Html->link('<span class="glyphicon glyphicon-pushpin"></span>', 
+					array('controller' => 'descriptions', 'action' => 'postings'), array('escape' => false, 'id' => 'hiddenPostings', 
+					'data-original-title' => 'Postings', 'data-placement' => 'bottom', 'data-toggle' => 'tooltip') ); ?>
 			      </li>
-			      <li <?php if( $this->params['controller'] == "users" && $this->params['action'] == "index" ) echo 'class="active"'; ?> >
+			      <li id="employers" <?php if( $this->params['controller'] == "users" && $this->params['action'] == "index" ) echo 'class="active"'; ?> >
 					<?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> Employers', 
 					array('controller' => 'users', 'action' => 'index'), array('escape' => false, 'id' => 'employersNav') ); ?>
+
+					<?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span>', 
+					array('controller' => 'users', 'action' => 'index'), array('escape' => false, 'id' => 'hiddenEmployers', 
+					'data-original-title' => 'Employers', 'data-placement' => 'bottom', 'data-toggle' => 'tooltip') ); ?>
 			      </li>
-			      <li <?php if( $this->params['controller'] == "users" && $this->params['action'] == "edit" ) echo 'class="active"'; ?> >
+			      <li id="account" <?php if( $this->params['controller'] == "users" && $this->params['action'] == "edit" ) echo 'class="active"'; ?> >
 					<?php echo $this->Html->link('<span class="glyphicon glyphicon-cog"></span> Account', 
 					array('controller' => 'users', 'action' => 'edit', AuthComponent::user('id') ), array('escape' => false, 'id' => 'accountNav') ); ?>
+
+					<?php echo $this->Html->link('<span class="glyphicon glyphicon-cog"></span>', 
+					array('controller' => 'users', 'action' => 'edit', AuthComponent::user('id') ), array('escape' => false, 'id' => 'hiddenAccount', 
+					'data-original-title' => 'Account', 'data-placement' => 'bottom', 'data-toggle' => 'tooltip') ); ?>
+			      </li>
+			      <li id="faq" <?php if( $this->params['controller'] == "users" && $this->params['action'] == "edit" ) echo 'class="active"'; ?> >
+					<?php echo $this->Html->link('<span class="glyphicon glyphicon-question-sign" style="padding-right: 20px;"></span></span> FAQ', 
+					array('controller' => 'users', 'action' => 'edit', AuthComponent::user('id') ), array('escape' => false, 'id' => 'accountNav') ); ?>
+
+					<?php echo $this->Html->link('<span class="glyphicon glyphicon-question-sign" style="padding-right: 20px;"></span></span>', 
+					array('controller' => 'users', 'action' => 'edit', AuthComponent::user('id') ), array('escape' => false, 'id' => 'hiddenAccount', 
+					'data-original-title' => 'Account', 'data-placement' => 'bottom', 'data-toggle' => 'tooltip') ); ?>
 			      </li>
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
 		      <li>
 		      	<?php echo $this->Html->link('<span class="glyphicon glyphicon-log-out" style="padding-right: 20px;"></span> ' . AuthComponent::user('username'), 
 		      	array('controller' => 'users', 'action' => 'logout'), array('escape' => false, 'id' => 'logoutNav') ); ?>
+
+		      	<?php echo $this->Html->link('<span class="glyphicon glyphicon-log-out" style="padding-right: 35px;"></span>', 
+		      	array('controller' => 'users', 'action' => 'logout'), array('escape' => false, 'id' => 'hiddenLogout', 
+		      	'data-original-title' => 'Logout', 'data-placement' => 'bottom', 'data-toggle' => 'tooltip') ); ?>
 		      </li>
 		    </ul>
 		  </div><!-- /.navbar-collapse -->
@@ -94,5 +126,24 @@
 		<!--Twitter Bootstrap 3 JS-->
 		<?php echo $this->Html->script('bootstrap.min'); ?>
 
+		<script>
+
+		    $('#hiddenDash').tooltip();
+		    $('#hiddenDescrips').tooltip();
+		    $('#hiddenPostings').tooltip();
+		    $('#hiddenEmployers').tooltip();
+		    $('#hiddenAccount').tooltip();
+		    $('#hiddenAccount').tooltip();
+		    $('#hiddenLogout').tooltip();
+
+			$('#dashNewUser').tooltip();
+			$('#dashNewDesc').tooltip();
+			$('#newDescription').tooltip();
+
+		</script>
+
+
+
 	</body>
+
 </html>

@@ -26,6 +26,12 @@
 
 			<?php echo $this->Form->end(); ?>
 
+			<?php
+				echo $this->Html->link('Discard Changes', 
+					array('controller' => 'users', 'action' => 'index'), 
+					array('class' => 'btn btn-danger btn-lg', 'style' => 'width: 100%;') );
+			?>
+
 		</div>
 
 	</div>

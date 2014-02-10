@@ -4,8 +4,6 @@
 
         <?php echo $this->Session->flash(); ?>
 
-        <?php echo $accessLevel;?>
-
     </div>
 
     <h1 class="sectionHeading"><i class="fa fa-list-alt"></i> Job Postings</h1>

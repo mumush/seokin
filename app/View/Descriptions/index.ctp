@@ -4,8 +4,6 @@
 
         <?php echo $this->Session->flash(); ?>
 
-        <?php echo $accessLevel;?>
-
     </div>
     
     <div class="row">
@@ -13,7 +11,8 @@
         <?php
             echo $this->Html->link('<i class="fa fa-plus"></i>', 
                 array('controller' => 'descriptions', 'action' => 'add'), 
-                array('escape' => false, 'id' => 'newDescription', 'class' => 'pull-right btn btn-info') );
+                array('escape' => false, 'id' => 'newDescription', 'class' => 'pull-right btn btn-info', 
+                'data-original-title' => 'New Description', 'data-placement' => 'bottom', 'data-toggle' => 'tooltip') );
         ?>
 
     </div>
