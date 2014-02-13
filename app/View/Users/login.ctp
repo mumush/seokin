@@ -21,7 +21,7 @@
 
 	<div class="row">
 
-		<div class="col-lg-6 col-lg-offset-3" style="font-size: 1.2em;">
+		<div class="col-lg-6 col-lg-offset-3">
 
 			<?php echo $this->Session->flash(); ?>
 

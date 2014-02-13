@@ -139,6 +139,7 @@
 			$('#dashNewUser').tooltip();
 			$('#dashNewDesc').tooltip();
 			$('#newDescription').tooltip();
+			$('#newUser').tooltip();
 
 		</script>
 

@@ -38,7 +38,8 @@ body {
 #loginForm, #registerForm {
 
   font-weight: 100;
-  font-family: 'Dosis';
+  font-size: .9em;
+  font-family: 'Roboto';
 
 }
 
@@ -57,7 +58,9 @@ body {
 
 	font-size: 1.5em;
 
-	color: #636363;
+	color: #7F7F7F;
+  font-family: 'Raleway';
+  font-weight: 300;
 
 }
 
@@ -85,6 +88,9 @@ body {
 
   font-size: 1.5em;
 
+  font-family: 'Raleway';
+  font-weight: 100;
+
 }
 
 #deptOptions {
@@ -97,6 +103,23 @@ body {
 	border: 1px solid #ccc;
 
 	color: #7F7F7F;
+
+  font-size: 20px;
+
+  font-family: 'Raleway';
+  font-weight: 300;
+
+}
+
+#registerForm .twitter-typeahead .tt-hint  {
+
+  color: #7F7F7F;
+  font-family: 'Raleway';
+  font-weight: 300;
+  font-style: normal;
+  font-size: 20px;
+  color: #ccc;
+
 
 }
 
@@ -213,10 +236,20 @@ body {
 
   font-family: 'Roboto Condensed';
   font-size: 3.5em;
-  color: #3B3B3B;
-  font-weight: 300;
+  color: #33332D;
+  font-weight: 100;
 
   text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
+
+}
+
+.allDescriptions table tr, .allUsers table tr {
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  font-size: 1.1em;
+  color: #33332D;
 
 }
 
@@ -224,19 +257,9 @@ body {
 
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 400;
-  font-size: 1.1em;
-  color: #33332D;
-
-}
-
-.allDescriptions table tr, .allUsers table tr {
-
-  font-family: 'Roboto';
-
   font-weight: 100;
-
-  font-size: 1.1em;
+  font-size: 1.2em;
+  color: #33332D;
 
 }
 
@@ -263,7 +286,7 @@ body {
 
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100;
   font-size: 1.15em;
   color: #33332D;
 
@@ -274,6 +297,12 @@ body {
   margin-bottom: 2%;
 
   border-radius: 1px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  font-size: 1.15em;
+  color: #33332D;
 
 }
 
@@ -299,10 +328,12 @@ body {
   margin-top: 4%;
   margin-bottom: 5%;
 
+  color: #fff;
+
   width: 100%;
   height: 80px;
 
-  font-family: 'Roboto';
+  font-family: 'Raleway';
 
   font-weight: 100;
 
@@ -322,7 +353,7 @@ body {
   width: 100%;
   height: 80px;
 
-  font-family: 'Roboto';
+  font-family: 'Raleway';
 
   font-weight: 100;
 
@@ -333,7 +364,7 @@ body {
 .editUser, .addUser {
 
   font-weight: 100;
-  font-family: 'Dosis';
+  font-family: 'Roboto';
 
 }
 
@@ -362,8 +393,8 @@ body {
 
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 400;
-  font-size: 1.2em;
+  font-weight: 100;
+  font-size: 1.3em;
   color: #33332D;
 
 }
@@ -442,7 +473,7 @@ body {
   height: 70px;
 
   font-family: 'Raleway';
-  font-weight: 400;
+  font-weight: 100;
 
   font-size: 1.4em;
 
@@ -459,9 +490,25 @@ body {
   border-radius: 2px;
 
   font-family: 'Raleway';
-  font-weight: 400;
+  font-weight: 100;
 
   font-size: 1.4em;
+
+}
+
+.allDash a {
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  font-size: 1.1em;
+
+}
+
+.allDash .panel-title {
+
+  font-family: 'Roboto';
+  font-weight: 100;
 
 }
 
@@ -491,10 +538,4 @@ body {
 
 }
 
-.divCounts div h2 {
 
-  font-size: 2.3em;
-  font-weight: 100;
-  font-family: 'Dosis';
-
-}

@@ -14,12 +14,16 @@ class UsersController extends AppController {
         // Allow users to register and logout.
         $this->Auth->allow('register', 'logout');
 
-        //get the user row in the Users table based on the cached id in session
-        $user = $this->User->findById( $this->Auth->user('id') );
-        //get the access level from the logged in user
-        $accessLevel = $user['User']['access_id'];
+        if ( $this->Auth->loggedIn() ) {
 
-        $this->set('accessLevel', $accessLevel);
+            //get the user row in the Users table based on the cached id in session
+            $user = $this->User->findById( $this->Auth->user('id') );
+            //get the access level from the logged in user
+            $accessLevel = $user['User']['access_id'];
+
+            $this->set('accessLevel', $accessLevel);
+
+        }
 
     }
 
@@ -44,7 +48,6 @@ class UsersController extends AppController {
 
         $this->layout = 'loginregister';
 
-
         if ($this->request->is('post')) {
 
             //add the default access_id of 2 -> EMPLOYER
@@ -63,8 +66,8 @@ class UsersController extends AppController {
             $this->User->create();
 
             if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__(  '<strong>' . $this->request->data['User']['username'] . '</strong> has been registered and can now access the system!'), 'success_message');
-                return $this->redirect(array('action' => 'index'));
+                $this->Session->setFlash(__(  'Registration Successful!  Log on in.'), 'success_message');
+                return $this->redirect(array('action' => 'login'));
             }
             $this->Session->setFlash(__('The employer could not be registered. Please, try again!'), 'danger_message');
         }
@@ -129,7 +132,7 @@ class UsersController extends AppController {
 
         if ($this->request->is('post')) {
 
-            //add the default access_id of 2 -> EMPLOYER
+            //add the default access_id of 2 -> USER
             $this->request->data['User']['access_id'] = 2;
 
             //get the department name entered from the POST variable with name "department_id"

@@ -11,13 +11,16 @@ class DescriptionsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
 
-    	//get the user row in the Users table based on the cached id in session
-    	$user = $this->Description->User->findById( $this->Auth->user('id') );
+        if ( $this->Auth->loggedIn() ) {
 
-    	//get the access level from the logged in user
-    	$accessLevel = $user['User']['access_id'];
+            //get the user row in the Users table based on the cached id in session
+            $user = $this->Description->User->findById( $this->Auth->user('id') );
+            //get the access level from the logged in user
+            $accessLevel = $user['User']['access_id'];
 
-        $this->set('accessLevel', $accessLevel);
+            $this->set('accessLevel', $accessLevel);
+
+        }
 
         $this->layout = 'seokin';
 

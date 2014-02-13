@@ -9,7 +9,8 @@
             <?php
                 echo $this->Html->link('<i class="fa fa-plus"></i>', 
                     array('controller' => 'users', 'action' => 'add'), 
-                    array('escape' => false, 'id' => 'newUser', 'class' => 'pull-right btn btn-info') );
+                    array('escape' => false, 'id' => 'newUser', 'class' => 'pull-right btn btn-info',
+                    'data-original-title' => 'New User', 'data-placement' => 'bottom', 'data-toggle' => 'tooltip') );
             ?>
 
         </div>
@@ -33,7 +34,13 @@
                         echo '<th>Access Level</th>';
 
                         echo '<th>Action</th>';
-                    } 
+                    }
+                    if( $accessLevel == 2 ) {
+
+                        echo '<th>Email</th>';
+                        echo '<th>Access Level</th>';                     
+
+                    }
                 ?>
             </tr>
 
@@ -71,6 +78,23 @@
                                 echo $this->Html->link('Delete', array('action' => 'delete', $user['User']['id']), array('class' => 'btn btn-danger') );
 
                                 echo '</td>';
+
+                            }
+
+                            if( $accessLevel == 2 ) {
+
+                                echo '<td>' . $user['User']['email'] . '</td>' ;
+
+                                if( $user['User']['access_id'] == 1 ) {
+
+                                    echo '<td>Admin</td>';
+
+                                }
+                                if( $user['User']['access_id'] == 2 ) {
+
+                                    echo '<td>Employer</td>';
+
+                                }
 
                             }
                         ?>

@@ -16,6 +16,8 @@
 		<!--Custom Fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
 
+		<link href='http://fonts.googleapis.com/css?family=Raleway:100,300|Roboto:400,300' rel='stylesheet' type='text/css'>
+
 	</head>
 
 	<body class='loginRegister'>
