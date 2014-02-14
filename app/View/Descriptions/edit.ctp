@@ -125,7 +125,7 @@
 
 					<?php
 						echo $this->Html->link('<i class="fa fa-check"></i> Approve Description', 
-							array('controller' => 'descriptions', 'action' => ''), 
+							array('controller' => 'descriptions', 'action' => 'approve', $this->request->data['Description']['id'] ), 
 							array('escape' => false, 'class' => 'btn btn-success btn-lg') );
 					?>
 
