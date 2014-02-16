@@ -243,6 +243,24 @@ body {
 
 }
 
+#searchTerm {
+
+  background: #fafafa;
+
+}
+
+#searchTerm:focus {
+
+  outline: none;
+
+  border: 1px solid rgba(243, 110, 33, .5);
+
+  -moz-box-shadow:    inset 0 0 2px rgba(255, 165, 0, .9);
+  -webkit-box-shadow: inset 0 0 2px rgba(255, 165, 0, .9);
+  box-shadow:       inset 0 0 2px rgba(255, 165, 0, .5);
+
+}
+
 .allDescriptions table tr, .allUsers table tr {
 
   font-family: 'Roboto';

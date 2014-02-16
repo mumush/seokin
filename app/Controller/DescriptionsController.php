@@ -81,6 +81,49 @@ class DescriptionsController extends AppController {
 
     }
 
+    public function refine() {
+
+		if ($this->request->is('post')) {
+
+			$user = $this->Description->User->findById( $this->Auth->user('id') );
+
+			$searchOption = $this->request->data['searchOption'];
+
+			switch ( $searchOption ) {
+
+				case 1: //show the most recent description based on id
+					$descriptions = $this->Description->find('all', array( 'order' => array('Description.id ' => 'desc' ) ) );
+
+					$this->set('descriptions', $descriptions );
+					break;
+
+				case 2: //order by department A-Z
+					$descriptions = $this->Description->find('all', array( 'order' => array('Description.department_id ' => 'asc' ) ) );
+
+					$this->set('descriptions', $descriptions );
+					break;
+
+				case 3: //order by user A-Z
+					$descriptions = $this->Description->find('all', array( 'order' => array('Description.user_id ' => 'asc' ) ) );
+
+					$this->set('descriptions', $descriptions );
+					break;
+
+				case 4: //order by title A-Z
+					$descriptions = $this->Description->find('all', array( 'order' => array('Description.title ' => 'asc' ) ) );
+
+					$this->set('descriptions', $descriptions );
+					break;
+
+				default:
+
+					return $this->redirect(array('action' => 'index'));
+			}
+
+		}
+
+    }
+
 
     public function index() {
 
@@ -365,7 +408,6 @@ class DescriptionsController extends AppController {
 	    return $this->redirect(array('action' => 'postings'));
 
     }
-
 
 
 }

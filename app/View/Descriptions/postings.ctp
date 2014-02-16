@@ -26,7 +26,7 @@
                 <tr>
                     <td><?php echo $desc['Description']['title']; ?></td>
                     <td><?php echo $desc['Department']['name']; ?></td>
-                    <td><?php echo $desc['Description']['number']; ?></td>
+                    <td><?php echo $desc['Description']['id']; ?></td>
                     <td><?php echo $desc['User']['first_name'] . ' ' . $desc['User']['last_name']; ?></td>
                     <td><?php echo $desc['Contact']['name']; ?></td>
                     <?php
