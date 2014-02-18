@@ -55,7 +55,20 @@
 					'data-original-title' => 'Dashboard', 'data-placement' => 'bottom', 'data-toggle' => 'tooltip') ); ?>
 				  </li>
 			      <li id="descriptions" <?php if( $this->params['controller'] == "descriptions" && $this->params['action'] == "index" ) echo 'class="active"'; ?> >
-					<?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> Descriptions', 
+
+				      <?php
+
+				      	if( $notifyDescripChanged == true ) {
+				      		$notification = '<i class="fa fa-circle notification"></i>';
+				      	}
+				      	else {
+				      		$notification = '';
+				      	}
+
+				      ?>
+
+
+					<?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> Descriptions ' . $notification , 
 					array('controller' => 'descriptions', 'action' => 'index'), array('escape' => false, 'id' => 'descripsNav') ); ?>
 
 					<?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>', 
@@ -86,14 +99,15 @@
 					array('controller' => 'users', 'action' => 'edit', AuthComponent::user('id') ), array('escape' => false, 'id' => 'hiddenAccount', 
 					'data-original-title' => 'Account', 'data-placement' => 'bottom', 'data-toggle' => 'tooltip') ); ?>
 			      </li>
-			      <li id="faq" <?php if( $this->params['controller'] == "users" && $this->params['action'] == "edit" ) echo 'class="active"'; ?> >
+			      <li id="faq" <?php if( $this->params['controller'] == "users" && $this->params['action'] == "faq" ) echo 'class="active"'; ?> >
 					<?php echo $this->Html->link('<span class="glyphicon glyphicon-question-sign" style="padding-right: 20px;"></span></span> FAQ', 
-					array('controller' => 'users', 'action' => 'edit', AuthComponent::user('id') ), array('escape' => false, 'id' => 'accountNav') ); ?>
+					array('controller' => 'users', 'action' => 'faq' ), array('escape' => false, 'id' => 'faqNav') ); ?>
 
 					<?php echo $this->Html->link('<span class="glyphicon glyphicon-question-sign" style="padding-right: 20px;"></span></span>', 
-					array('controller' => 'users', 'action' => 'edit', AuthComponent::user('id') ), array('escape' => false, 'id' => 'hiddenAccount', 
-					'data-original-title' => 'Account', 'data-placement' => 'bottom', 'data-toggle' => 'tooltip') ); ?>
+					array('controller' => 'users', 'action' => 'faq' ), array('escape' => false, 'id' => 'hiddenFaq', 
+					'data-original-title' => 'FAQ', 'data-placement' => 'bottom', 'data-toggle' => 'tooltip') ); ?>
 			      </li>
+
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
 		      <li>
@@ -137,6 +151,7 @@
 		    $('#hiddenAccount').tooltip();
 		    $('#hiddenAccount').tooltip();
 		    $('#hiddenLogout').tooltip();
+		    $('#hiddenFaq').tooltip();
 
 			$('#dashNewUser').tooltip();
 			$('#dashNewDesc').tooltip();

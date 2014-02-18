@@ -71,8 +71,8 @@
 			<?php
 				echo $this->Form->input('essential_tasks', array('class' => 'form-control'));
 				echo $this->Form->input('nonessential_tasks', array('class' => 'form-control'));
-				echo $this->Form->input('quals_req', array('class' => 'form-control'));
-				echo $this->Form->input('quals_pref', array('class' => 'form-control'));
+				echo $this->Form->input('quals_req', array('class' => 'form-control', 'label' => 'Qualifications Required'));
+				echo $this->Form->input('quals_pref', array('class' => 'form-control', 'label' => 'Qualifications Preferred'));
 			?>
 
 		</div>

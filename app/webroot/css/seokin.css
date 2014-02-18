@@ -125,7 +125,16 @@ body {
 
 /*TOP NAVIGATION*/
 
-#hiddenDash, #hiddenDescrips, #hiddenPostings, #hiddenEmployers, #hiddenAccount, #hiddenLogout {
+.notification {
+
+  font-size: .4em;
+
+  position: relative;
+  bottom: 10px;
+
+}
+
+#hiddenDash, #hiddenDescrips, #hiddenPostings, #hiddenEmployers, #hiddenAccount, #hiddenFaq, #hiddenLogout {
 
   display: none;
 
@@ -144,7 +153,7 @@ body {
 
   }
 
-  #hiddenDash, #hiddenDescrips, #hiddenPostings, #hiddenEmployers, #hiddenAccount, #hiddenLogout {
+  #hiddenDash, #hiddenDescrips, #hiddenPostings, #hiddenEmployers, #hiddenAccount, #hiddenFaq, #hiddenLogout {
 
     display: block;
 
@@ -160,13 +169,13 @@ body {
 
 @media (max-width: 768px) {
 
-  #hiddenDash, #hiddenDescrips, #hiddenPostings, #hiddenEmployers, #hiddenAccount, #hiddenLogout {
+  #hiddenDash, #hiddenDescrips, #hiddenPostings, #hiddenEmployers, #hiddenAccount, #hiddenFaq, #hiddenLogout {
 
     display: none;
 
   }
 
-  #dashNav, #descripsNav, #postingsNav, #employersNav, #accountNav, #logoutNav {
+  #dashNav, #descripsNav, #postingsNav, #employersNav, #accountNav, #faqNav, #logoutNav {
 
     display: block;
 
@@ -175,7 +184,8 @@ body {
 } /*END MEDIA QUERIES*/
 
 
-#dashNav, #descripsNav, #postingsNav, #employersNav, #accountNav, #logoutNav, #hiddenDash, #hiddenDescrips, #hiddenPostings, #hiddenEmployers, #hiddenAccount, #hiddenLogout {
+#dashNav, #descripsNav, #postingsNav, #employersNav, #accountNav, #faqNav, #logoutNav, #hiddenDash, #hiddenDescrips, #hiddenPostings, 
+#hiddenEmployers, #hiddenAccount, #hiddenFaq, #hiddenLogout {
 
   -webkit-transition: background .9s ease-out;
   transition: background .9s ease-out;
@@ -209,6 +219,12 @@ body {
 #accountNav:hover, #hiddenAccount:hover {
 
   background: #F94D3E;
+
+}
+
+#faqNav:hover, #hiddenFaq:hover {
+
+  background: #A96DD3;
 
 }
 

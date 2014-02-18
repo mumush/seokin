@@ -20,6 +20,31 @@ class DescriptionsController extends AppController {
 
             $this->set('accessLevel', $accessLevel);
 
+
+            //admin notes notifications
+            //determine if any of the logged in users descriptions have any admin notes
+            //if they do, notify the user because the status of one/many of their descriptions
+            //may have changed
+
+            $this->Description->User->findById( $this->Auth->user('id') );
+
+    		$conditions = array('Description.user_id' => $user['User']['id'], 'NOT' => array('Description.admin_notes' => '') );
+
+    		if( $this->Description->hasAny($conditions) ) {
+
+    			$notifyDescripChanged = true;
+    			$this->set('notifyDescripChanged', $notifyDescripChanged);
+
+    		}
+
+    		else {
+
+				$notifyDescripChanged = false;
+				$this->set('notifyDescripChanged', $notifyDescripChanged);  			
+
+    		}
+
+
         }
 
         $this->layout = 'seokin';
@@ -79,6 +104,19 @@ class DescriptionsController extends AppController {
 
     	}
 
+    	//set the views count variables for use regardless of user or admin
+
+		$countPending = $this->Description->find('count', array( 'conditions' => array('Description.status_id' => 1) ));
+		$this->set('countPending', $countPending );
+		$countApproved = $this->Description->find('count', array( 'conditions' => array('Description.status_id' => 2) ));
+		$this->set('countApproved', $countApproved );
+		$countDenied = $this->Description->find('count', array( 'conditions' => array('Description.status_id' => 3) ));
+		$this->set('countDenied', $countDenied );
+		$countPosted = $this->Description->find('count', array( 'conditions' => array('Description.is_posted' => 1) ));
+		$this->set('countPosted', $countPosted );
+		$countEmployers = $this->Description->User->find('count');
+		$this->set('countEmployers', $countEmployers );
+
     }
 
     public function refine() {
@@ -117,7 +155,7 @@ class DescriptionsController extends AppController {
 
 				default:
 
-					return $this->redirect(array('action' => 'index'));
+					$this->redirect(array('action' => 'index'));
 			}
 
 		}
@@ -292,7 +330,7 @@ class DescriptionsController extends AppController {
 
     	//set the descriptions necessary hard coded changes because it is now a job
     	//initially set job to not posted
-		$this->Description->set( array('status_id' => 2, 'number' => ('number' + 1), 'is_posted' => 0)  );
+		$this->Description->set( array('status_id' => 2, 'is_posted' => 0, 'admin_notes' => '')  );
 		//save the model, update the row in the db
 		$this->Description->save();
 

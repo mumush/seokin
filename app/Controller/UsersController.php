@@ -23,6 +23,29 @@ class UsersController extends AppController {
 
             $this->set('accessLevel', $accessLevel);
 
+            //admin notes notifications
+            //determine if any of the logged in users descriptions have any admin notes
+            //if they do, notify the user because the status of one/many of their descriptions
+            //may have changed
+
+            $this->User->findById( $this->Auth->user('id') );
+
+            $conditions = array('Description.user_id' => $user['User']['id'], 'NOT' => array('Description.admin_notes' => '') );
+
+            if( $this->User->Description->hasAny($conditions) ) {
+
+                $notifyDescripChanged = true;
+                $this->set('notifyDescripChanged', $notifyDescripChanged);
+
+            }
+
+            else {
+
+                $notifyDescripChanged = false;
+                $this->set('notifyDescripChanged', $notifyDescripChanged);              
+
+            }
+
         }
 
     }
@@ -222,7 +245,8 @@ class UsersController extends AppController {
         if ($this->User->delete()) {
             $this->Session->setFlash(__('Employer deleted!'), 'success_message');
 
-            //$this->Session->setFlash('User deletedgheruirge', array('class' => 'alert alert-info') );
+            $this->User->findByName( $id );
+
 
             return $this->redirect(array('action' => 'index'));
         }

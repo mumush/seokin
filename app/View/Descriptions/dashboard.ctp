@@ -204,11 +204,11 @@
                 <div class="panel-body">
 
                     <ul class="dashList">
-                        <li>Total Pending Descriptions: 139</li>
-                        <li>Total Approved Descriptions: 170</li>
-                        <li>Total Denied Descriptions: 23</li>
-                        <li>Job Postings: 67</li>
-                        <li>Registered Employers: 104</li>
+                        <li>Total Pending Descriptions: <?php echo $countPending; ?> </li>
+                        <li>Total Approved Descriptions: <?php echo $countApproved; ?> </li>
+                        <li>Total Denied Descriptions: <?php echo $countDenied; ?> </li>
+                        <li>Posted Jobs: <?php echo $countPosted; ?> </li>
+                        <li>Registered Employers: <?php echo $countEmployers; ?> </li>
                     </ul>
                     
                 </div>
