@@ -339,6 +339,12 @@ body {
 
 }
 
+.firstThreeDept {
+
+  width: 10%;
+
+}
+
 .editDescription label, .addDescription label {
 
   font-family: 'Roboto';
@@ -390,10 +396,8 @@ body {
   width: 100%;
   height: 80px;
 
-  font-family: 'Roboto';
-
-  font-weight: 100;
-
+  font-family: 'Raleway';
+  font-weight: 300;
   font-size: 1.6em;
 
   border-radius: 3px;
@@ -412,11 +416,70 @@ body {
   width: 100%;
   height: 80px;
 
-  font-family: 'Roboto';
-
-  font-weight: 100;
-
+  font-family: 'Raleway';
+  font-weight: 300;
   font-size: 1.6em;
+
+}
+
+.assignNumber {
+
+  margin-top: -20px;
+
+}
+
+.assignNumber h3 {
+
+  font-weight: 300;
+  font-family: 'Roboto';
+  font-size: 1.8em;
+
+}
+
+.assignNumber h3 i {
+
+  font-size: .7em;
+
+  margin-right: 6px;
+
+}
+
+.assignNumber input[type="text"] {
+
+  font-family: 'Roboto';
+  font-weight: 100;
+  font-size: 1.8em;
+  color: #33332D;
+
+  border-radius: 3px;
+
+  margin-left: 60px;
+  width: 75%;
+
+}
+
+.assignNumber input[type="text"]:focus {
+
+  border: 1px solid rgba(243, 110, 33, .5);
+
+  -moz-box-shadow:    3px 3px 5px 6px rgba(255, 165, 0, .9);
+  -webkit-box-shadow: 3px 3px 5px 6px rgba(255, 165, 0, .9);
+  box-shadow:       inset 0 0 3px rgba(255, 165, 0, .9);
+
+}
+
+.assignNumber input[type="submit"] {
+
+  font-family: 'Raleway';
+  font-weight: 300;
+  font-size: 1.6em;
+
+  margin-top: 4%;
+  margin-left: 25px;
+
+  width: 90%;
+
+  border-radius: 3px;
 
 }
 
@@ -531,9 +594,8 @@ body {
   width: 100%;
   height: 70px;
 
-  font-family: 'Roboto';
-  font-weight: 100;
-
+  font-family: 'Raleway';
+  font-weight: 300;
   font-size: 1.6em;
 
 }
@@ -548,9 +610,8 @@ body {
 
   border-radius: 2px;
 
-  font-family: 'Roboto';
-  font-weight: 100;
-
+  font-family: 'Raleway';
+  font-weight: 300;
   font-size: 1.6em;
 
 }

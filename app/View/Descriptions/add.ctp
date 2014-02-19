@@ -28,6 +28,10 @@
 
 		<div class="col-lg-6">
 
+			<label style="margin-bottom: 1%;" for="number">First Three Digits of Department Number</label>
+
+			<?php echo $this->Form->input('number', array('id' => 'number', 'class' => 'form-control firstThreeDept', 'maxlength' => '3', 'label' => false)); ?>
+
 			<label style="margin-bottom: 1%;" for="wage">Wage</label>
 
 			<div class="input-group">
@@ -84,9 +88,9 @@
 		<div class="col-lg-6">
 
 			<?php
-			    echo $this->Form->submit('Submit Description', array('class' => 'btn btn-success btn-lg') );
-
-				echo $this->Form->end();
+				echo $this->Html->link('Assign Job Number', 
+					array('controller' => 'descriptions', 'action' => 'assign'), 
+					array('class' => 'btn btn-danger btn-lg') );
 			?>
 
 		</div>
@@ -102,7 +106,6 @@
 		</div>
 
 	</div>
-
 
 </div>
 

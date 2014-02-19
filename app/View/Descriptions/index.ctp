@@ -75,7 +75,8 @@
 
                             echo '<td>';
 
-                            echo $this->Html->link('Approve', array('controller' => 'descriptions', 'action' => 'approve', $desc['Description']['id']), array('class' => 'btn btn-success') ) 
+                            echo $this->Html->link('Approve', array('controller' => 'descriptions', 'action' => 'assign', 
+                                $desc['Description']['id']), array('class' => 'btn btn-success') ) 
                             . ' ' .
                             $this->Html->link('Deny', array('controller' => 'descriptions', 'action' => 'deny', $desc['Description']['id']), array('class' => 'btn btn-danger') );
 

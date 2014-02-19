@@ -207,10 +207,6 @@ class DescriptionsController extends AppController {
 			//set the descriptions status id initially to 1 -> PENDING
 			$this->request->data['Description']['status_id'] = 1;
 
-			//because the description is initially pending, give it an initial
-			//job number of 0 as it is not already a job
-			$this->request->data['Description']['number'] = 0;
-
 			//initially set is_posted to FALSE b/c the description is not approved
 			//and is not officially a job
 			$this->request->data['Description']['is_posted'] = 0;
@@ -316,7 +312,8 @@ class DescriptionsController extends AppController {
 
 	}
 
-	public function approve( $id = null ) {
+	//assign a job number to a given description before approving
+	function assign( $id = null) {
 
 	    if ( !$id ) {
 	        throw new NotFoundException(__('Invalid Description'));
@@ -328,16 +325,45 @@ class DescriptionsController extends AppController {
 	    	throw new NotFoundException(__('Invalid Description'));
 	    }
 
-    	//set the descriptions necessary hard coded changes because it is now a job
-    	//initially set job to not posted
-		$this->Description->set( array('status_id' => 2, 'is_posted' => 0, 'admin_notes' => '')  );
-		//save the model, update the row in the db
-		$this->Description->save();
+	    $firstThreeOfDeptNumber = substr( $desc['Description']['number'] , 0, 3);
 
-		$this->Session->setFlash(__( $desc['User']['username'] . "'s " . 'job description has been approved!'), 'success_message');
+	    //descriptions with the same first three digits of dept number
+	    $sameDeptDescs = $this->Description->find('all', array( 'conditions' => array( 'Description.status_id' => 2, 'Description.number LIKE' => "$firstThreeOfDeptNumber%" ), 'order' => array('Description.number' => 'DESC') ) );
 
-		//redirect to the index controller method
-	    return $this->redirect(array('action' => 'index'));
+	    $this->set('sameDeptDescs', $sameDeptDescs );
+
+	    $this->set( 'assignDesc', $desc);
+
+
+	}
+
+	public function approve() {
+
+        if ($this->request->is('post')) {
+
+        	//get the admin entered, complete job number
+        	$jobNumber = $this->request->data['jobnumber'];
+
+        	$jobId = $this->request->data['jobid'];
+
+		    //get the description row based on the id passed in the method
+		    //if it exists, run the update, otherwise throw an exception
+		    if ( !($desc = $this->Description->read( null, $jobId )) ) {
+		    	throw new NotFoundException(__('Invalid Description'));
+		    }
+
+	    	//set the descriptions necessary hard coded changes because it is now a job
+	    	//initially set job to not posted
+	    	//clear the admin notes as the description has been approved
+			$this->Description->set( array('status_id' => 2, 'is_posted' => 0, 'admin_notes' => '', 'number' => $jobNumber )  );
+			//save the model, update the row in the db
+			$this->Description->save();
+
+			$this->Session->setFlash(__( $desc['User']['username'] . "'s " . 'job description has been approved!'), 'success_message');
+
+			//redirect to the index controller method
+		    return $this->redirect(array('action' => 'index'));
+        }
 
 	}
 
