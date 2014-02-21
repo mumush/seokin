@@ -162,6 +162,104 @@ class DescriptionsController extends AppController {
 
     }
 
+    public function searchDesc() {
+
+    	if ($this->request->is('post')) {
+
+	    	//get the user row in the Users table based on the cached id in session
+	    	$user = $this->Description->User->findById( $this->Auth->user('id') );
+	    	//get the access level from the logged in user
+	    	$accessLevel = $user['User']['access_id'];
+	    	//get the department_id from the logged in user
+	    	$deptID = $user['User']['department_id'];
+
+	    	//get the search term from the post data
+	    	$searchTerm = $this->request->data['searchterm'];
+
+	    	//if the user has employer access, filter the descriptions by the users department
+	    	//and then show descriptions that are like the search term based on title or job number
+	    	if( $accessLevel == 2 ) {
+
+		    	$descriptions = $this->Description->find('all', array( 'conditions' => array( 'OR' => array(
+
+		    		array('Description.title LIKE ' => "%$searchTerm%"), array('Description.number LIKE ' => "%$searchTerm%") ), 
+
+		    		'Description.department_id' => $deptID ) ) );
+
+		    	$this->set('descriptions', $descriptions );
+
+	    	}
+	    	//if they're an admin, show all of the descriptions that are like the search term based on either title or number
+	    	else {
+
+		    	$descriptions = $this->Description->find('all', array( 'conditions' => array( 'OR' => array(
+
+		    		array('Description.title LIKE ' => "%$searchTerm%"), array('Description.number LIKE ' => "%$searchTerm%") ) ) ) );
+
+
+	    		$this->set('descriptions', $descriptions );
+
+	    	}
+
+    	}
+    	else {
+
+    		$this->redirect(array('action' => 'index'));
+
+    	}
+
+    }
+
+    public function searchPost() {
+
+    	if ($this->request->is('post')) {
+
+	    	//get the user row in the Users table based on the cached id in session
+	    	$user = $this->Description->User->findById( $this->Auth->user('id') );
+	    	//get the access level from the logged in user
+	    	$accessLevel = $user['User']['access_id'];
+	    	//get the department_id from the logged in user
+	    	$deptID = $user['User']['department_id'];
+
+	    	//get the search term from the post data
+	    	$searchTerm = $this->request->data['searchterm'];
+
+	    	//if the user has employer access, filter the approved descriptions by the users department
+	    	//and then show descriptions that are like the search term based on title or job number
+	    	if( $accessLevel == 2 ) {
+
+		    	$descriptions = $this->Description->find('all', array( 'conditions' => array( 'OR' => array(
+
+		    		array('Description.title LIKE ' => "%$searchTerm%"), array('Description.number LIKE ' => "%$searchTerm%") ), 
+
+		    		'Description.department_id' => $deptID, 'AND' => array('Description.status_id' => 2) ) ) );
+
+		    	$this->set('descriptions', $descriptions );
+
+	    	}
+	    	//if they're an admin, show all of the approved descriptions that are like the search term based on either title or number
+	    	else {
+
+		    	$descriptions = $this->Description->find('all', array( 'conditions' => array( 'OR' => array(
+
+		    		array('Description.title LIKE ' => "%$searchTerm%"), array('Description.number LIKE ' => "%$searchTerm%") ), 
+
+		    		array( 'status_id' => 2 ) ) ) );
+
+
+	    		$this->set('descriptions', $descriptions );
+
+	    	}
+
+    	}
+    	else {
+
+    		$this->redirect(array('action' => 'postings'));
+
+    	}
+
+    }
+
 
     public function index() {
 

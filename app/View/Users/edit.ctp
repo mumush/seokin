@@ -12,7 +12,15 @@
 			    <fieldset>
 			        <?php
 				        echo $this->Form->input('username', array('class' => 'form-control input-lg col-sm-2'));
-				        echo $this->Form->input('password', array('class' => 'form-control input-lg'));
+
+				        //if the user is an employer, require that they enter their password
+				        //if an admin, no need to require or even show another users password
+				        if( $accessLevel == 2 ) {
+
+				        	echo $this->Form->input('password', array('class' => 'form-control input-lg'));
+
+				        }
+
 				        echo $this->Form->input('email', array('class' => 'form-control input-lg'));
 				        echo $this->Form->input('first_name', array('class' => 'form-control input-lg'));
 				        echo $this->Form->input('last_name', array('class' => 'form-control input-lg')); ?>

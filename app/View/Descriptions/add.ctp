@@ -18,7 +18,7 @@
 				echo $this->Form->input('hrs_per_week', array('class' => 'form-control', 'label' => 'Hours Per Week'));
 				echo $this->Form->input('flexible', array('label' => 'Flexible Hours') );
 				echo '<br />';
-				echo $this->Form->input('shift_days', array('class' => 'form-control'));
+				echo $this->Form->input('shift_days', array('class' => 'form-control', 'placeholder' => 'ex. Monday-Friday'));
 				echo $this->Form->input('shift_start_time', array('class' => 'form-control'));
 				echo $this->Form->input('shift_end_time', array('class' => 'form-control'));
 
@@ -88,9 +88,11 @@
 		<div class="col-lg-6">
 
 			<?php
-				echo $this->Html->link('Assign Job Number', 
-					array('controller' => 'descriptions', 'action' => 'assign'), 
-					array('class' => 'btn btn-danger btn-lg') );
+
+			    echo $this->Form->submit('Submit Description', array('class' => 'btn btn-success btn-lg') );
+
+				echo $this->Form->end();
+
 			?>
 
 		</div>

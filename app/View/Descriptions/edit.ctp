@@ -18,6 +18,7 @@
 		echo $this->Form->input('end_date', array('class' => 'form-control') );
 		echo $this->Form->input('hrs_per_week', array('class' => 'form-control', 'label' => 'Hours Per Week') );
 		echo $this->Form->input('flexible', array('label' => 'Flexible Hours') );
+		echo '<br />';
 		echo $this->Form->input('shift_days', array('class' => 'form-control') );
 		echo $this->Form->input('shift_start_time', array('class' => 'form-control') );
 		echo $this->Form->input('shift_end_time', array('class' => 'form-control') );
@@ -27,6 +28,11 @@
 	</div>
 
 	<div class="col-lg-6">
+
+		<label style="margin-bottom: 1%;" for="number">First Three Digits of Department Number</label>
+
+		<?php echo $this->Form->input('number', array('id' => 'number', 'class' => 'form-control firstThreeDept', 'maxlength' => '3', 'label' => false)); ?>
+
 
 		<label style="margin-bottom: 1%;" for="wage">Wage</label>
 
@@ -106,7 +112,7 @@
 		<?php
 			echo $this->Html->link('Discard Changes', 
 				array('controller' => 'descriptions', 'action' => 'index'), 
-				array('class' => 'btn btn-danger btn-lg') );
+				array('class' => 'btn btn-warning btn-lg') );
 		?>
 
 	</div>
@@ -125,14 +131,20 @@
 
 					<?php
 						echo $this->Html->link('<i class="fa fa-check"></i> Approve Description', 
-							array('controller' => 'descriptions', 'action' => 'approve', $this->request->data['Description']['id'] ), 
+							array('controller' => 'descriptions', 'action' => 'assign', $this->request->data['Description']['id'] ), 
 							array('escape' => false, 'class' => 'btn btn-success btn-lg') );
+					?>
+
+					<?php
+						echo $this->Html->link('<i class="fa fa-times"></i> Deny Description', 
+							array('controller' => 'descriptions', 'action' => 'deny', $this->request->data['Description']['id'] ), 
+							array('escape' => false, 'class' => 'btn btn-danger btn-lg') );
 					?>
 
 				</div>	
 
-
 			</div>
+
 		<?php
 		}
 	}

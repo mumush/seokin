@@ -56,7 +56,7 @@ class UsersController extends AppController {
 
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
-                return $this->redirect( array('controller' => 'descriptions', 'actions' => 'index') );
+                return $this->redirect( array('controller' => 'descriptions', 'actions' => 'dashboard') );
             }
             $this->Session->setFlash(__('Invalid username or password'), 'danger_message');
         }
@@ -242,11 +242,10 @@ class UsersController extends AppController {
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));
         }
-        if ($this->User->delete()) {
-            $this->Session->setFlash(__('Employer deleted!'), 'success_message');
-
-            $this->User->findByName( $id );
-
+        //delete all of users associated descriptions
+        if ( $this->User->delete( array('User.id' => $id ), true, false) ) {
+            
+            $this->Session->setFlash(__('Employer deleted!  All of their associated job descriptions have been successfully removed from the system.'), 'success_message');
 
             return $this->redirect(array('action' => 'index'));
         }
@@ -302,6 +301,12 @@ class UsersController extends AppController {
 
         //redirect to the index controller method
         return $this->redirect(array('action' => 'index'));
+    }
+
+    public function faq() {
+
+        $this->layout = 'seokin';        
+
     }
 
 }
