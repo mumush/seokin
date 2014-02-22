@@ -112,15 +112,3 @@
 </div>
 
 
-<script src="https://code.jquery.com/jquery.js"></script>
-
-<!--Twitter Bootstrap 3 JS-->
-<?php echo $this->Html->script('bootstrap.min'); ?>
-
-<script>
-
-	$('#wage').popover( {'trigger': 'focus','placement': 'top','content': '$8.00, $8.10, $8.20, or $8.30+'} );
-
-</script>
-
-

@@ -123,6 +123,7 @@
 		</nav>
 
 		<div class="container">
+		
 			<div class="row" style="margin-top: 100px;">
 
 				<div class="col-lg-12">
@@ -133,6 +134,36 @@
 				</div>
 
 			</div>
+
+		    <div class="row footer">
+
+				<div class="col-lg-6">
+
+					<p><a href="http://www.rit.edu/seo">Student Employment Office</a>, 49 Lomb Memorial Drive, Rochester, NY 14623</p>
+					<p>Copyright &copy; <a href="http://www.rit.edu/">Rochester Institute of Technology</a>, All Rights Reserved.</p>
+					<p>Technical Inquiries Contact <a href="mailto:rhoff37@gmail.com">Ryan Hoffmann</a></p>
+
+				</div>
+
+				<div class="col-lg-2 col-lg-offset-1">
+
+					<p><?php echo $this->Html->link('Dashboard', array('controller' => 'descriptions', 'action' => 'dashboard') ); ?></p>
+					<p><?php echo $this->Html->link('Job Descriptions', array('controller' => 'descriptions', 'action' => 'index') ); ?></p>
+					<p><?php echo $this->Html->link('Job Postings', array('controller' => 'descriptions', 'action' => 'postings') ); ?></p>
+
+				</div>
+
+				<div class="col-lg-2 col-lg-offset-1">
+
+					<p><?php echo $this->Html->link('Employers', array('controller' => 'users', 'action' => 'index') ); ?></p>
+					<p><?php echo $this->Html->link('Account', array('controller' => 'users', 'action' => 'edit', AuthComponent::user('id') ) ); ?></p>
+					<p><?php echo $this->Html->link('FAQ', array('controller' => 'users', 'action' => 'faq') ); ?></p>
+
+				</div>
+
+		    </div>
+
+
 		</div>
 
 
@@ -157,6 +188,8 @@
 			$('#dashNewDesc').tooltip();
 			$('#newDescription').tooltip();
 			$('#newUser').tooltip();
+
+			$('#wage').popover( {'trigger': 'focus','placement': 'top','content': '$8.00, $8.10, $8.20, or $8.30+'} );
 
 		</script>
 

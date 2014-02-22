@@ -248,6 +248,30 @@ body {
 
 /*END TOP NAVIGATION*/
 
+.footer {
+
+  margin-left: 0px;
+
+  position: relative;
+  bottom: 0;
+
+  margin-top: 30px;
+  padding: 1%;
+  padding-bottom: 0%;
+
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  background-color: #f1f1f1;
+
+  font-family: 'Roboto';
+  font-weight: 100;
+
+  border: 1px solid #DDDDDD;
+  border-radius: 3px;
+
+}
+
+
 /*SEOkin Layout*/
 
 .sectionHeading {
@@ -634,6 +658,12 @@ body {
 
 }
 
+#searchField {
+
+  border-radius: 3px;
+
+}
+
 #refineSelect, #searchField {
 
   font-family: 'Roboto';
@@ -646,9 +676,9 @@ body {
 
   border: 1px solid rgba(243, 110, 33, .5);
 
-  -moz-box-shadow:    3px 3px 5px 6px rgba(255, 165, 0, .9);
-  -webkit-box-shadow: 3px 3px 5px 6px rgba(255, 165, 0, .9);
-  box-shadow:       inset 0 0 3px rgba(255, 165, 0, .9);
+  -moz-box-shadow:    inset 0 0 2px rgba(255, 165, 0, .9);
+  -webkit-box-shadow: inset 0 0 2px rgba(255, 165, 0, .9);
+  box-shadow:       inset 0 0 2px rgba(255, 165, 0, .9);
 
 }
 
