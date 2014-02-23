@@ -123,7 +123,7 @@
 		</nav>
 
 		<div class="container">
-		
+
 			<div class="row" style="margin-top: 100px;">
 
 				<div class="col-lg-12">
@@ -141,7 +141,12 @@
 
 					<p><a href="http://www.rit.edu/seo">Student Employment Office</a>, 49 Lomb Memorial Drive, Rochester, NY 14623</p>
 					<p>Copyright &copy; <a href="http://www.rit.edu/">Rochester Institute of Technology</a>, All Rights Reserved.</p>
-					<p>Technical Inquiries Contact <a href="mailto:rhoff37@gmail.com">Ryan Hoffmann</a></p>
+
+					<p>
+						<a href="http://www.rit.edu/disclaimer.html">Disclaimer</a> |
+						<a href="http://www.rit.edu/copyright.html">Copyright Infringement</a> |
+						<a href="mailto:rhoff37@gmail.com">Technical Inquiries</a>
+					</p>
 
 				</div>
 

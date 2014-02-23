@@ -29,7 +29,21 @@
 
 		<div class="col-lg-6">
 
-			<label style="margin-bottom: 1%;" for="number">First Three Digits of Department Number</label>
+
+			<label style="margin-bottom: 1%;" for="number">
+
+				<?php 
+					if( strlen( $this->request->data['Description']['number'] ) != 3 ) {
+						echo 'Job Number';
+					}
+
+					else {
+						echo 'First Three Digits of Department Number';
+					}
+				?>
+
+			</label>
+
 
 			<?php echo $this->Form->input('number', array('id' => 'number', 'class' => 'form-control firstThreeDept', 'maxlength' => '3', 'label' => false)); ?>
 
@@ -152,16 +166,4 @@
 	?>
 
 </div>
-
-<script src="https://code.jquery.com/jquery.js"></script>
-
-<!--Twitter Bootstrap 3 JS-->
-<?php echo $this->Html->script('bootstrap.min'); ?>
-
-<script>
-
-	$('#wage').popover( {'trigger': 'focus','placement': 'top','content': '$8.00, $8.10, $8.20, or $8.30+'} );
-
-</script>
-
 

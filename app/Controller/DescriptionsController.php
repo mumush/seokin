@@ -372,6 +372,9 @@ class DescriptionsController extends AppController {
 					//again be approved
 					$this->request->data['Description']['is_posted'] = 0;
 
+					//reset the admin notes to an empty string as the job has been resubmitted for approval
+					$this->request->data['Description']['admin_notes'] = '';
+
 				}
 			}
 
